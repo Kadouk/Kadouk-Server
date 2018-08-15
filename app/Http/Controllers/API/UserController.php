@@ -17,7 +17,7 @@ public $successStatus = 200;
         if(Auth::attempt(['phone' => request('phone'), 'password' => request('password')])){ 
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('MyApp')-> accessToken; 
-            return response()->json(['success' => $success], $this-> successStatus); 
+            return response()->json( $success, $this-> successStatus); 
         } 
         else{ 
             return response()->json(['error'=>'Unauthorised'], 401); 
@@ -36,15 +36,15 @@ public $successStatus = 200;
             'password' => 'required', 
             'c_password' => 'required|same:password', 
         ]);
-if ($validator->fails()) { 
+        if ($validator->fails()) { 
             return response()->json(['error'=>$validator->errors()], 401);            
         }
-$input = $request->all(); 
+        $input = $request->all(); 
         $input['password'] = bcrypt($input['password']); 
         $user = User::create($input); 
         $success['token'] =  $user->createToken('MyApp')-> accessToken; 
         $success['name'] =  $user->name;
-return response()->json(['success'=>$success], $this-> successStatus); 
+        return response()->json(['success'=>$success], $this-> successStatus); 
     }
 /** 
      * details api 
@@ -54,6 +54,6 @@ return response()->json(['success'=>$success], $this-> successStatus);
     public function details() 
     { 
         $user = Auth::user(); 
-        return response()->json(['success' => $user], $this-> successStatus); 
+        return response()->json( $user, $this-> successStatus); 
     } 
 }
