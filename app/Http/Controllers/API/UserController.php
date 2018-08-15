@@ -33,6 +33,8 @@ public $successStatus = 200;
         $validator = Validator::make($request->all(), [ 
             'name' => 'required', 
             'phone' => 'required', 
+            'gender' => 'required', 
+            'birth' => 'required', 
             'password' => 'required', 
             'c_password' => 'required|same:password', 
         ]);
