@@ -34,7 +34,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'p' => 
         array (
             'phpseclib\\' => 10,
-            'phpDocumentor\\Reflection\\' => 25,
         ),
         'Z' => 
         array (
@@ -47,7 +46,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'W' => 
         array (
             'Whoops\\' => 7,
-            'Webmozart\\Assert\\' => 17,
         ),
         'T' => 
         array (
@@ -117,6 +115,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
             'Firebase\\JWT\\' => 13,
             'Fideloper\\Proxy\\' => 16,
             'Faker\\' => 6,
+            'F2m2\\Apidocs\\' => 13,
         ),
         'E' => 
         array (
@@ -146,12 +145,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
         ),
-        'phpDocumentor\\Reflection\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-        ),
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
@@ -163,10 +156,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
-        ),
-        'Webmozart\\Assert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -324,6 +313,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'F2m2\\Apidocs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/f2m2/apidocs/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator',
@@ -363,6 +356,13 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
     );
 
     public static $prefixesPsr0 = array (
+        'p' => 
+        array (
+            'phpDocumentor' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -404,6 +404,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -551,6 +552,9 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+        'F2m2\\Apidocs\\ApidocsServiceProvider' => __DIR__ . '/..' . '/f2m2/apidocs/src/ApidocsServiceProvider.php',
+        'F2m2\\Apidocs\\Commands\\ApiDocsGenerator' => __DIR__ . '/..' . '/f2m2/apidocs/src/Commands/ApiDocsGenerator.php',
+        'F2m2\\Apidocs\\Commands\\ApiDocsGeneratorCommand' => __DIR__ . '/..' . '/f2m2/apidocs/src/Commands/ApiDocsGeneratorCommand.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
         'Faker\\Calculator\\Luhn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',
@@ -1881,6 +1885,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Illuminate\\Validation\\Rules\\Exists' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/Exists.php',
         'Illuminate\\Validation\\Rules\\In' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/In.php',
         'Illuminate\\Validation\\Rules\\NotIn' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/NotIn.php',
+        'Illuminate\\Validation\\Rules\\RequiredIf' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/RequiredIf.php',
         'Illuminate\\Validation\\Rules\\Unique' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/Rules/Unique.php',
         'Illuminate\\Validation\\UnauthorizedException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/UnauthorizedException.php',
         'Illuminate\\Validation\\ValidatesWhenResolvedTrait' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Validation/ValidatesWhenResolvedTrait.php',
@@ -2451,10 +2456,14 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'PHPUnit\\Runner\\Filter\\IncludeGroupFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/IncludeGroupFilterIterator.php',
         'PHPUnit\\Runner\\Filter\\NameFilterIterator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Filter/NameFilterIterator.php',
         'PHPUnit\\Runner\\Hook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/Hook.php',
+        'PHPUnit\\Runner\\NullTestResultCache' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/NullTestResultCache.php',
         'PHPUnit\\Runner\\PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/PhptTestCase.php',
+        'PHPUnit\\Runner\\ResultCacheExtension' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/ResultCacheExtension.php',
         'PHPUnit\\Runner\\StandardTestSuiteLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/StandardTestSuiteLoader.php',
         'PHPUnit\\Runner\\TestHook' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/TestHook.php',
         'PHPUnit\\Runner\\TestListenerAdapter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Hook/TestListenerAdapter.php',
+        'PHPUnit\\Runner\\TestResultCache' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestResultCache.php',
+        'PHPUnit\\Runner\\TestResultCacheInterface' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestResultCacheInterface.php',
         'PHPUnit\\Runner\\TestSuiteLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestSuiteLoader.php',
         'PHPUnit\\Runner\\TestSuiteSorter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/TestSuiteSorter.php',
         'PHPUnit\\Runner\\Version' => __DIR__ . '/..' . '/phpunit/phpunit/src/Runner/Version.php',
@@ -2976,6 +2985,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Prophecy\\Doubler\\ClassPatch\\ProphecySubjectPatch' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/ProphecySubjectPatch.php',
         'Prophecy\\Doubler\\ClassPatch\\ReflectionClassNewInstancePatch' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/ReflectionClassNewInstancePatch.php',
         'Prophecy\\Doubler\\ClassPatch\\SplFileInfoPatch' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/SplFileInfoPatch.php',
+        'Prophecy\\Doubler\\ClassPatch\\ThrowablePatch' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/ThrowablePatch.php',
         'Prophecy\\Doubler\\ClassPatch\\TraversablePatch' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/ClassPatch/TraversablePatch.php',
         'Prophecy\\Doubler\\DoubleInterface' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/DoubleInterface.php',
         'Prophecy\\Doubler\\Doubler' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Doubler/Doubler.php',
@@ -3716,6 +3726,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Symfony\\Component\\HttpKernel\\HttpCache\\Ssi' => __DIR__ . '/..' . '/symfony/http-kernel/HttpCache/Ssi.php',
         'Symfony\\Component\\HttpKernel\\HttpCache\\Store' => __DIR__ . '/..' . '/symfony/http-kernel/HttpCache/Store.php',
         'Symfony\\Component\\HttpKernel\\HttpCache\\StoreInterface' => __DIR__ . '/..' . '/symfony/http-kernel/HttpCache/StoreInterface.php',
+        'Symfony\\Component\\HttpKernel\\HttpCache\\SubRequestHandler' => __DIR__ . '/..' . '/symfony/http-kernel/HttpCache/SubRequestHandler.php',
         'Symfony\\Component\\HttpKernel\\HttpCache\\SurrogateInterface' => __DIR__ . '/..' . '/symfony/http-kernel/HttpCache/SurrogateInterface.php',
         'Symfony\\Component\\HttpKernel\\HttpKernel' => __DIR__ . '/..' . '/symfony/http-kernel/HttpKernel.php',
         'Symfony\\Component\\HttpKernel\\HttpKernelInterface' => __DIR__ . '/..' . '/symfony/http-kernel/HttpKernelInterface.php',
@@ -3940,7 +3951,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
-        'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',
         'Whoops\\Exception\\Frame' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Frame.php',
@@ -3992,74 +4002,31 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Zend\\Diactoros\\Stream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Stream.php',
         'Zend\\Diactoros\\UploadedFile' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/UploadedFile.php',
         'Zend\\Diactoros\\Uri' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Uri.php',
-        'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
-        'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
-        'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Description' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Description.php',
-        'phpDocumentor\\Reflection\\DocBlock\\DescriptionFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/DescriptionFactory.php',
-        'phpDocumentor\\Reflection\\DocBlock\\ExampleFinder' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/ExampleFinder.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Serializer' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Serializer.php',
-        'phpDocumentor\\Reflection\\DocBlock\\StandardTagFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/StandardTagFactory.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tag.php',
-        'phpDocumentor\\Reflection\\DocBlock\\TagFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/TagFactory.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Author' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Author.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\BaseTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/BaseTag.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Covers' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Covers.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Deprecated' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Deprecated.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Example' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Example.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\StaticMethod' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/StaticMethod.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\Strategy' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/Strategy.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\AlignFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/AlignFormatter.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\PassthroughFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/PassthroughFormatter.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Generic' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Generic.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Link' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Link.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Method' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Method.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Param' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Param.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Property' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Property.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\PropertyRead' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/PropertyRead.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\PropertyWrite' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/PropertyWrite.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Reference\\Fqsen' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Reference/Fqsen.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Reference\\Reference' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Reference/Reference.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Reference\\Url' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Reference/Url.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Return_' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Return_.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\See' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/See.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Since' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Since.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Source' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Source.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Throws' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Throws.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Uses' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Uses.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Var_' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Var_.php',
-        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Version' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Version.php',
-        'phpDocumentor\\Reflection\\Element' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Element.php',
-        'phpDocumentor\\Reflection\\File' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/File.php',
-        'phpDocumentor\\Reflection\\Fqsen' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Fqsen.php',
-        'phpDocumentor\\Reflection\\FqsenResolver' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/FqsenResolver.php',
-        'phpDocumentor\\Reflection\\Location' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Location.php',
-        'phpDocumentor\\Reflection\\Project' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Project.php',
-        'phpDocumentor\\Reflection\\ProjectFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/ProjectFactory.php',
-        'phpDocumentor\\Reflection\\Type' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Type.php',
-        'phpDocumentor\\Reflection\\TypeResolver' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/TypeResolver.php',
-        'phpDocumentor\\Reflection\\Types\\Array_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Array_.php',
-        'phpDocumentor\\Reflection\\Types\\Boolean' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Boolean.php',
-        'phpDocumentor\\Reflection\\Types\\Callable_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Callable_.php',
-        'phpDocumentor\\Reflection\\Types\\Compound' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Compound.php',
-        'phpDocumentor\\Reflection\\Types\\Context' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Context.php',
-        'phpDocumentor\\Reflection\\Types\\ContextFactory' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/ContextFactory.php',
-        'phpDocumentor\\Reflection\\Types\\Float_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Float_.php',
-        'phpDocumentor\\Reflection\\Types\\Integer' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Integer.php',
-        'phpDocumentor\\Reflection\\Types\\Iterable_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Iterable_.php',
-        'phpDocumentor\\Reflection\\Types\\Mixed_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Mixed_.php',
-        'phpDocumentor\\Reflection\\Types\\Null_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Null_.php',
-        'phpDocumentor\\Reflection\\Types\\Nullable' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Nullable.php',
-        'phpDocumentor\\Reflection\\Types\\Object_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Object_.php',
-        'phpDocumentor\\Reflection\\Types\\Parent_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Parent_.php',
-        'phpDocumentor\\Reflection\\Types\\Resource_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Resource_.php',
-        'phpDocumentor\\Reflection\\Types\\Scalar' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Scalar.php',
-        'phpDocumentor\\Reflection\\Types\\Self_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Self_.php',
-        'phpDocumentor\\Reflection\\Types\\Static_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Static_.php',
-        'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
-        'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
-        'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Context' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Description' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Description.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Location' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Location.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Serializer' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Serializer.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\AuthorTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/AuthorTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\CoversTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/CoversTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\DeprecatedTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/DeprecatedTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\ExampleTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/ExampleTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\LinkTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/LinkTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\MethodTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/MethodTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\ParamTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/ParamTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\PropertyReadTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/PropertyReadTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\PropertyTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/PropertyTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\PropertyWriteTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/PropertyWriteTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\ReturnTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/ReturnTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\SeeTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/SeeTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\SinceTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/SinceTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\SourceTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/SourceTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\ThrowsTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/ThrowsTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\UsesTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/UsesTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\VarTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/VarTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tag\\VersionTag' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Tag/VersionTag.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Type\\Collection' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Type/Collection.php',
         'phpseclib\\Crypt\\AES' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
         'phpseclib\\Crypt\\Base' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
         'phpseclib\\Crypt\\Blowfish' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/Crypt/Blowfish.php',

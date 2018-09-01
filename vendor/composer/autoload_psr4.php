@@ -7,11 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpseclib\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
     'Zend\\Diactoros\\' => array($vendorDir . '/zendframework/zend-diactoros/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
-    'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'TijsVerkoyen\\CssToInlineStyles\\' => array($vendorDir . '/tijsverkoyen/css-to-inline-styles/src'),
     'Tests\\' => array($baseDir . '/tests'),
     'Symfony\\Polyfill\\Php72\\' => array($vendorDir . '/symfony/polyfill-php72'),
@@ -51,6 +49,7 @@ return array(
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Fideloper\\Proxy\\' => array($vendorDir . '/fideloper/proxy/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
+    'F2m2\\Apidocs\\' => array($vendorDir . '/f2m2/apidocs/src'),
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/EmailValidator'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
