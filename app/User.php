@@ -16,7 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'gender', 'birth'
+        'name',
+        'password', 
+        'phone', 
+        'gender', 
+        'birth',
+        'active'
     ];
 
     /**
@@ -25,6 +30,34 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+    
+         /**
+     * Retrieve a user by their phone number.
+     *
+     * @param  string $phone
+     * @return $this
+     */
+    public static function byPhone($phone)
+    {
+        return static::where('phone', $phone)->first();
+    }
+    
+     /**
+     * Retrieve a user by their phone number.
+     *
+     * @param  string $phone
+     * @return $this
+     */
+    public function isActive()
+    {
+        if($this->active == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }
