@@ -56,7 +56,7 @@ public $successStatus = 200;
             return response()->json( $success, $this-> successStatus); 
         }
         else{ 
-            return response()->json(['error'=>'Not Register'], 401); 
+            return response()->json(['error'=>'Not Register'], $this-> successStatus); 
         }
     }
     
@@ -90,11 +90,11 @@ public $successStatus = 200;
                 
             }
             else{
-                return response()->json(['error'=>'Wrong Code'], 401); 
+                return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
             }
         }
         else{
-            return response()->json(['error'=>'Wrong Code'], 401); 
+            return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
             }
     }
     
