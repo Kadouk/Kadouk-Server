@@ -18,3 +18,5 @@ Route::get('/', function () {
  Route::get('docs', function(){
     return View::make('docs.api.index');
  });
+ 
+ Route::get('/test', 'API\ContentController@show');
