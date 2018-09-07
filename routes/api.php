@@ -23,3 +23,25 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
 });
+
+
+
+
+Route::middleware('auth:api')->get('download/image/{filename}', function($filename)
+{
+    // Check if file exists in app/storage/file folder
+    //$file_path = public_path() .'/images/'. $filename;
+    $file_path = storage_path('app/images/contents/' . $filename);
+    if (file_exists($file_path))
+    {
+        // Send Download
+        return Response()->file($file_path);
+    }
+    else
+    {
+        // Error
+        exit('Requested file does not exist on our server!');
+    }
+})
+->where('filename', '[A-Za-z0-9\-\_\.]+');
+
