@@ -13,4 +13,12 @@ class ContentImage extends Model
         'content_id',
         'path'
     ];
+    
+    protected $hidden = [
+        'content_id',
+        'created_at',
+        'updated_at',
+        'id'
+        
+    ];
 }

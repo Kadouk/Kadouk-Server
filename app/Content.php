@@ -12,8 +12,16 @@ class Content extends Model
     protected $fillable = [
         'name',
         'desc',
-        'id_catagory',
-        'id_publisher'
+        'catagory_id',
+        'publisher_id'
+    ];
+    
+    protected $hidden = [
+        'catagory_id',
+        'publisher_id',
+        'created_at',
+        'updated_at'
+        
     ];
     
     public function image()
