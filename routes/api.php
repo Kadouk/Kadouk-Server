@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 
 
-Route::middleware('auth:api')->get('download/image/{filename}', function($filename)
+Route::get('download/image/{filename}', function($filename)
 {
     // Check if file exists in app/storage/file folder
     //$file_path = public_path() .'/images/'. $filename;

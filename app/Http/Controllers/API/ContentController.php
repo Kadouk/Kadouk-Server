@@ -56,9 +56,24 @@ class ContentController extends Controller
        
         foreach($contents as $content)
         {
-            echo $content->image;
+            $c = $content;
+            $image = $content->image;
+            if($image)
+            echo $image->path;
+            //if($image)
+              // $image = $image->toArray();
+            //$content = $content->toArray();
+            
+            //echo $content->image;
+            //echo $content->crossJoin($image);
+            if($content->image){
+               // echo $image->path;
+            $c->push($content->image->path);
+          //  echo $content;
+            
+            }
         }
-        
+        return $c;
         //return response()->json( $user, $this-> successStatus); 
         
     }
