@@ -53,10 +53,13 @@ class ContentController extends Controller
     {
         $user = Auth::user();
         $contents = Content::all();
-       
+       $c=[];
+       $i=0;
         foreach($contents as $content)
         {
-            $image = $content->image;
+            
+            $image = $content->image->path;
+            //echo $image;
             //if($image)
            // echo $image->path;
             //if($image)
@@ -67,14 +70,17 @@ class ContentController extends Controller
             //echo $content->crossJoin($image);
             if($content->image){
                // echo $image->path;
-            $content->push($content->image->path);
-            $content['image']=1;
+           // $content->pull($content->image);
+            $content = $content->toArray();
+            $content['image']=$image;
+            $c[$i]=$content;
+            //return $content;
           //  echo $content;
-            
+            $i++;
             }
         }
-        //return $contents;
-        return response()->json( ['contents' => $contents], 200); 
+        //return $c;
+        return response()->json( ['contents' => $c], 200); 
         
     }
 
