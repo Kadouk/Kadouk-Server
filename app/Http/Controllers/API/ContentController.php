@@ -68,12 +68,13 @@ class ContentController extends Controller
             if($content->image){
                // echo $image->path;
             $content->push($content->image->path);
+            $content['image']=1;
           //  echo $content;
             
             }
         }
-        return $contents;
-        //return response()->json( $user, $this-> successStatus); 
+        //return $contents;
+        return response()->json( ['contents' => $contents], 200); 
         
     }
 
