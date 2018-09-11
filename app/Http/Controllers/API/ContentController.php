@@ -117,4 +117,8 @@ class ContentController extends Controller
     {
         //
     }
+    
+    public function showContent(Request $request){
+        
+    }
 }

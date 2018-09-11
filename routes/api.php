@@ -28,11 +28,11 @@ Route::get('/content/show/all', 'API\ContentController@show');
 
 
 
-Route::get('download/image/{filename}', function($filename)
+Route::get('download/image/{publisher_id}/{content_id}/{filename}', function($publisher_id, $content_id, $filename)
 {
     // Check if file exists in app/storage/file folder
     //$file_path = public_path() .'/images/'. $filename;
-    $file_path = storage_path('app/images/contents/' . $filename);
+    $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_id . '/' . $filename);
     if (file_exists($file_path))
     {
         // Send Download
@@ -50,7 +50,7 @@ Route::get('download/apk/{filename}', function($filename)
 {
     // Check if file exists in app/storage/file folder
     //$file_path = public_path() .'/images/'. $filename;
-    $file_path = storage_path('app/images/contents/' . $filename);
+    $file_path = storage_path('app/apk/' . $filename);
     if (file_exists($file_path))
     {
         // Send Download
