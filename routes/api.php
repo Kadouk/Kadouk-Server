@@ -26,15 +26,15 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 Route::get('/content/show/all', 'API\ContentController@show');
 
-Route::get('/content/show/page', 'API\ContentController@showContent');
+Route::post('/content/show/page', 'API\ContentController@showContent');
 
 
 
-Route::get('download/image/{publisher_id}/{content_id}/{filename}', function($publisher_id, $content_id, $filename)
+Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', function($publisher_id, $content_type, $content_id, $filename)
 {
     // Check if file exists in app/storage/file folder
     //$file_path = public_path() .'/images/'. $filename;
-    $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_id . '/' . $filename);
+    $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
     if (file_exists($file_path))
     {
         // Send Download
