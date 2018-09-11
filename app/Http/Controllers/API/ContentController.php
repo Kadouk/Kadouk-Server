@@ -119,6 +119,29 @@ class ContentController extends Controller
     }
     
     public function showContent(Request $request){
+        $content = Content::find($request->id);
+                  
+            $image = $content->image->path;
+            //echo $image;
+            //if($image)
+           // echo $image->path;
+            //if($image)
+              // $image = $image->toArray();
+            //$content = $content->toArray();
+            
+            //echo $content->image;
+            //echo $content->crossJoin($image);
+            if($content->image){
+               // echo $image->path;
+           // $content->pull($content->image);
+            $content = $content->toArray();
+            $content['image']=$image;
+            //$c[$i]=$content;
+            //return $content;
+          //  echo $content;
+            }
+        //return $c;
+        return response()->json( ['contents' => $content], 200);
         
     }
 }
