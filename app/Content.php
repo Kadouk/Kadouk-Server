@@ -28,4 +28,20 @@ class Content extends Model
     {
         return $this->hasOne('App\ContentImage');
     }
+    
+    public function file()
+    {
+        return $this->hasOne('App\ContentFile');
+    }
+    
+    public function media()
+    {
+        return $this->hasMany('App\ContentMedia');
+    }
+    
+    public function publisher()
+    {
+        return $this->hasOne('App\Publisher');
+    }
+    
 }

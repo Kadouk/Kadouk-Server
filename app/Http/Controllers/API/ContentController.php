@@ -122,6 +122,8 @@ class ContentController extends Controller
         $content = Content::find($request->id);
                   
             $image = $content->image->path;
+            $media = $content->media;
+            $file = $content->file;
             //echo $image;
             //if($image)
            // echo $image->path;
@@ -143,5 +145,36 @@ class ContentController extends Controller
         //return $c;
         return response()->json( ['contents' => $content], 200);
         
+    }
+    
+    public function showSearch(Request $request){
+        
+    }
+    
+    public function searchContent(Request $request){
+        
+        $user = Auth::user();
+        
+        $search = $request->s;
+        
+        $contents = Content::where('name', 'LIKE', '%'.$search.'%')
+                ->orwhere('desc', 'LIKE', '%'.$search.'%')
+                ->get();
+       $c=[];
+       $i=0;
+       
+        foreach($contents as $content)
+        {
+            $image = $content->image->path;
+            
+            if($content->image){
+                $content = $content->toArray();
+                $content['image']=$image;
+                $c[$i]=$content;
+
+                $i++;
+            }
+        }
+        return response()->json( ['contents' => $c], 200);       
     }
 }

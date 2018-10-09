@@ -28,6 +28,9 @@ Route::get('/content/show/all', 'API\ContentController@show');
 
 Route::post('/content/show/page', 'API\ContentController@showContent');
 
+Route::post('/content/search', 'API\ContentController@searchContent');
+
+
 
 
 Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', function($publisher_id, $content_type, $content_id, $filename)

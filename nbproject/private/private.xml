@@ -6,8 +6,11 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/UserController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Middleware/VerifyCsrfToken.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/User.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Content.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/ContentController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Providers/AuthServiceProvider.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/auth.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Publisher.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/routes/api.php</file>
         </group>
     </open-files>
