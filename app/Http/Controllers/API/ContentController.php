@@ -147,6 +147,49 @@ class ContentController extends Controller
         
     }
     
+    public function showCatContent(Request $request){
+        
+        $user = Auth::user();
+        
+        $catagory = $request->cat;
+        $num = $request->num;
+        
+        $cat = \App\Catagory::where('name', $catagory)->first();
+        if($cat){
+            $catID = $cat->id;
+        }
+        else{
+            $catID = 0;
+        }
+        
+        if($num){
+            $contents = Content::where('catagory_id', $catID)
+                    ->take($num)
+                    ->get();
+        }
+        else{
+            $contents = Content::where('catagory_id', $catID)
+                    ->get();
+        }
+        
+       $c=[];
+       $i=0;
+       
+        foreach($contents as $content)
+        {
+            $image = $content->image->path;
+            
+            if($content->image){
+                $content = $content->toArray();
+                $content['image']=$image;
+                $c[$i]=$content;
+
+                $i++;
+            }
+        }
+        return response()->json( ['contents' => $c], 200);       
+    }
+    
     public function showSearch(Request $request){
         
     }

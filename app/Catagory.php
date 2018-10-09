@@ -4,17 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Publisher extends Model
+class Catagory extends Model
 {
     //
-    protected $table = 'publishers';
+    protected $table = 'catagory';
     
     protected $fillable = [
-        'phone',
-        'address',
-        'first_name',
-        'last_name',
-        'company_name'
+        'name',
+        'desc'
     ];
     
      public function content()

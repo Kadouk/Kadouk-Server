@@ -30,6 +30,8 @@ Route::post('/content/show/page', 'API\ContentController@showContent');
 
 Route::post('/content/search', 'API\ContentController@searchContent');
 
+Route::get('/content/show/cat', 'API\ContentController@showCatContent');
+
 
 
 
