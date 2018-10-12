@@ -220,4 +220,16 @@ class ContentController extends Controller
         }
         return response()->json( ['contents' => $c], 200);       
     }
+    
+    public function getVersionAll(Request $request){
+        
+        $user = Auth::user();
+        
+        $search = $request->s;
+        
+        $contents = Content::select('name', 'id', 'version')
+                ->get();
+
+        return response()->json( ['contents' => $contents], 200);
+    }
 }
