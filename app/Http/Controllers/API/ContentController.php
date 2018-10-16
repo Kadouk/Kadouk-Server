@@ -151,16 +151,16 @@ class ContentController extends Controller
         
         $user = Auth::user();
         
-        $catagory = $request->cat;
+        $catID = $request->cat;
         $num = $request->num;
         
-        $cat = \App\Catagory::where('name', $catagory)->first();
+        /*$cat = \App\Catagory::where('name', $catagory)->first();
         if($cat){
             $catID = $cat->id;
         }
         else{
             $catID = 0;
-        }
+        }*/
         
         if($num){
             $contents = Content::where('catagory_id', $catID)
