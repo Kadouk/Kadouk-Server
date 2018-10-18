@@ -154,13 +154,13 @@ class ContentController extends Controller
         $catID = $request->cat;
         $num = $request->num;
         
-        /*$cat = \App\Catagory::where('name', $catagory)->first();
+        $cat = \App\Catagory::where('id', $catID)->first();
         if($cat){
-            $catID = $cat->id;
+            $catName = $cat->name;
         }
         else{
-            $catID = 0;
-        }*/
+            $catName = "سایر";
+        }
         
         if($num){
             $contents = Content::where('catagory_id', $catID)
