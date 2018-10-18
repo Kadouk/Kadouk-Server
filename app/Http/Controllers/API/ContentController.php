@@ -187,7 +187,7 @@ class ContentController extends Controller
                 $i++;
             }
         }
-        return response()->json( ['contents' => $c], 200);       
+        return response()->json( ['contents' => $c, 'catName' => $catName], 200);       
     }
     
     public function showSearch(Request $request){
