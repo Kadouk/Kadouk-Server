@@ -144,7 +144,7 @@ class ContentController extends Controller
           //  echo $content;
             }
         //return $c;
-        return response()->json( ['contents' => $content], 200);
+        return response()->json(  $content, 200);
         
     }
     
