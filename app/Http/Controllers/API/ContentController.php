@@ -134,7 +134,7 @@ class ContentController extends Controller
             //echo $content->image;
             //echo $content->crossJoin($image);
             
-            /*if($content->image){
+            if($content->image){
                // echo $image->path;
            // $content->pull($content->image);
             $content = $content->toArray();
@@ -142,7 +142,7 @@ class ContentController extends Controller
             //$c[$i]=$content;
             //return $content;
           //  echo $content;
-            }*/
+            }
         //return $c;
         return response()->json( ['contents' => $content], 200);
         
