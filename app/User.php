@@ -40,8 +40,7 @@ class User extends Authenticatable
      * @param  string $phone
      * @return $this
      */
-    public static function byPhone($phone)
-    {
+    public static function byPhone($phone){
         return static::where('phone', $phone)->first();
     }
     
@@ -51,13 +50,21 @@ class User extends Authenticatable
      * @param  string $phone
      * @return $this
      */
-    public function isActive()
-    {
+    public function isActive(){
         if($this->active == 0){
             return false;
         }
         else{
             return true;
         }
+    }
+    
+    public function id(){
+        return $this->id;
+    }
+    
+    public function contents()
+    {
+        return $this->belongsToMany('App\Content');
     }
 }

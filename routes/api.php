@@ -23,6 +23,7 @@ Route::post('register', 'API\UserController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
+    Route::post('/download/history/show', 'API\DownloadController@showHistory');
 });
 
 Route::get('/content/show/all', 'API\ContentController@show');
@@ -32,6 +33,8 @@ Route::post('/content/show/page', 'API\ContentController@showContent');
 Route::post('/content/search', 'API\ContentController@searchContent');
 
 Route::post('/content/show/cat', 'API\ContentController@showCatContent');
+
+
 
 
 Route::post('get/version', 'API\DeviceController@getVersion');

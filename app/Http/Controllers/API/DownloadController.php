@@ -6,24 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; 
 use App\User;
-use App\UserHAsContent;
+use App\UserHasContent;
 
 class DownloadController extends Controller
 {
     //
     
-    public function History(Request $request){
+    public function showHistory(Request $request){
         $c=[];
         $i=0;
         
         $user = Auth::user(); 
         
-        $cat = \App\UserHAsContent::where('users_id', $user->user_id)->get();
+        $contents = $user->contents;
         
         foreach($contents as $content)
         {
             $image = $content->image->path;
-            
+
             if($content->image){
                 $content = $content->toArray();
                 $content['image']=$image;
@@ -31,6 +31,7 @@ class DownloadController extends Controller
                 $i++;
             }
         }
+
         return response()->json( ['contents' => $c], 200); 
         
     }

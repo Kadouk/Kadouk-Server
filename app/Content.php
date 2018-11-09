@@ -44,4 +44,9 @@ class Content extends Model
         return $this->hasOne('App\Publisher');
     }
     
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
+    
 }
