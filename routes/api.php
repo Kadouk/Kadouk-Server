@@ -24,6 +24,8 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
     Route::post('/download/history/show', 'API\DownloadController@showHistory');
+    Route::get('download/apk/{publisher_id}/{content_id}/{filename}', 'DownloadController@apkDownload')
+            ->where('filename', '[A-Za-z0-9\-\_\.]+');
 });
 
 Route::get('/content/show/all', 'API\ContentController@show');
@@ -42,39 +44,8 @@ Route::post('get/version', 'API\DeviceController@getVersion');
 
 
 
-Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', function($publisher_id, $content_type, $content_id, $filename)
-{
-    // Check if file exists in app/storage/file folder
-    //$file_path = public_path() .'/images/'. $filename;
-    $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
-    if (file_exists($file_path))
-    {
-        // Send Download
-        return Response()->file($file_path);
-    }
-    else
-    {
-        // Error
-        exit('Requested file does not exist on our server!');
-    }
-})
+Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@imageDownload')
 ->where('filename', '[A-Za-z0-9\-\_\.]+');
 
-Route::get('download/apk/{publisher_id}/{content_id}/{filename}', function($publisher_id, $content_id, $filename)
-{
-    // Check if file exists in app/storage/file folder
-    //$file_path = public_path() .'/images/'. $filename;
-     $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_id . '/' . $filename);
-    if (file_exists($file_path))
-    {
-        // Send Download
-        return Response()->file($file_path);
-    }
-    else
-    {
-        // Error
-        exit('Requested file does not exist on our server!');
-    }
-})
-->where('filename', '[A-Za-z0-9\-\_\.]+');
+
 

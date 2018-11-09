@@ -35,4 +35,28 @@ class DownloadController extends Controller
         return response()->json( ['contents' => $c], 200); 
         
     }
+    
+    public function imageDownload($publisher_id, $content_type, $content_id, $filename){
+
+        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
+    
+        if (file_exists($file_path)){
+            return Response()->file($file_path);
+        }
+        else{
+            exit('Requested file does not exist on our server!');
+        }
+
+    }
+    
+    public function apkDownload($publisher_id, $content_id, $filename){
+
+        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_id . '/' . $filename);
+        if (file_exists($file_path)){
+            return Response()->file($file_path);
+        }
+        else{
+        exit('Requested file does not exist on our server!');
+        }
+    }
 }
