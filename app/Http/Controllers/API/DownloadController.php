@@ -49,14 +49,18 @@ class DownloadController extends Controller
 
     }
     
-    public function apkDownload($publisher_id, $content_id, $filename){
+    public function apkDownload($publisher_id, $content_type, $content_id, $filename){
 
-        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_id . '/' . $filename);
+        $user = Auth::user();
+        
+        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
         if (file_exists($file_path)){
+            $content = \App\Content::find($content_id);
+            $content->users()->attach($user);
             return Response()->file($file_path);
         }
         else{
-        exit('Requested file does not exist on our server!');
+            exit('Requested file does not exist on our server!');
         }
     }
 }

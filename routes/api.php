@@ -24,7 +24,7 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
     Route::post('/download/history/show', 'API\DownloadController@showHistory');
-    Route::get('download/apk/{publisher_id}/{content_id}/{filename}', 'DownloadController@apkDownload')
+    Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@apkDownload')
             ->where('filename', '[A-Za-z0-9\-\_\.]+');
 });
 

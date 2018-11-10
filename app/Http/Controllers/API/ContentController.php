@@ -122,8 +122,9 @@ class ContentController extends Controller
         $content = Content::find($request->id);
                   
             $image = $content->image->path;
-            //$media = $content->media;
-            //$file = $content->file;
+            $media = $content->media;
+            
+            $file = $content->file->path;
             //echo $image;
             //if($image)
            // echo $image->path;
@@ -139,6 +140,7 @@ class ContentController extends Controller
            // $content->pull($content->image);
             $content = $content->toArray();
             $content['image']=$image;
+            $content['file']=$file;
             //$c[$i]=$content;
             //return $content;
           //  echo $content;
