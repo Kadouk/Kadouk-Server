@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/UserController.php</file>
-            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/UserHAsContent.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/PublisherController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/CatagoryController.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/ContentFile.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Publisher.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/routes/api.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Device.php</file>
@@ -18,6 +18,7 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/ContentController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/DeviceController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Providers/AuthServiceProvider.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/ContentImage.php</file>
         </group>
     </open-files>
 </project-private>

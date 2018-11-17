@@ -122,9 +122,10 @@ class ContentController extends Controller
         $content = Content::find($request->id);
                   
             $image = $content->image->path;
+            $file = $content->file->path;
             $media = $content->media;
             
-            $file = $content->file->path;
+            
             //echo $image;
             //if($image)
            // echo $image->path;
