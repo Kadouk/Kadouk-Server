@@ -140,6 +140,7 @@ class ContentController extends Controller
                // echo $image->path;
            // $content->pull($content->image);
             $content = $content->toArray();
+            $c['media'] = $media;
             $content['image']=$image;
             $content['file']=$file;
             //$c[$i]=$content;
@@ -147,7 +148,7 @@ class ContentController extends Controller
           //  echo $content;
             }
         //return $c;
-        return response()->json(  $content, 200);
+        return response()->json(  $c, 200);
         
     }
     
