@@ -4773,6 +4773,58 @@
         ]
     },
     {
+        "name": "zarinpal/zarinpal",
+        "version": "v1.3.2",
+        "version_normalized": "1.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/RTLer/zarinpal-composer-library.git",
+            "reference": "16c349c74941d6f49dcb066943ead5432fd62998"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/RTLer/zarinpal-composer-library/zipball/16c349c74941d6f49dcb066943ead5432fd62998",
+            "reference": "16c349c74941d6f49dcb066943ead5432fd62998",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "^6.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "6.3.*",
+            "satooshi/php-coveralls": "^1.0"
+        },
+        "time": "2018-01-31T12:55:03+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Zarinpal\\Laravel\\ZarinpalServiceProvider"
+                ],
+                "aliases": {
+                    "Zarinpal": "Zarinpal\\Laravel\\Facade\\Zarinpal"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zarinpal\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-only"
+        ],
+        "authors": [
+            {
+                "name": "hooman naghiee",
+                "email": "hooman@zarinpal.com"
+            }
+        ],
+        "description": "transaction request system for zarinpal"
+    },
+    {
         "name": "zendframework/zend-diactoros",
         "version": "1.8.5",
         "version_normalized": "1.8.5.0",

@@ -12,6 +12,8 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
         'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -20,8 +22,6 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
         '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
         '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
@@ -38,6 +38,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
+            'Zarinpal\\' => 9,
         ),
         'X' => 
         array (
@@ -148,6 +149,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
+        ),
+        'Zarinpal\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zarinpal/zarinpal/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -403,17 +408,26 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
 
     public static $classMap = array (
         'App\\AuthenticatesUser' => __DIR__ . '/../..' . '/app/AuthenticatesUser.php',
+        'App\\Catagory' => __DIR__ . '/../..' . '/app/Catagory.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Content' => __DIR__ . '/../..' . '/app/Content.php',
+        'App\\ContentFile' => __DIR__ . '/../..' . '/app/ContentFile.php',
         'App\\ContentImage' => __DIR__ . '/../..' . '/app/ContentImage.php',
+        'App\\ContentMedia' => __DIR__ . '/../..' . '/app/ContentMedia.php',
+        'App\\Device' => __DIR__ . '/../..' . '/app/Device.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\CatagoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CatagoryController.php',
         'App\\Http\\Controllers\\API\\ContentController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ContentController.php',
+        'App\\Http\\Controllers\\API\\DownloadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/DownloadController.php',
+        'App\\Http\\Controllers\\API\\PublisherController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/PublisherController.php',
         'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DownloadController' => __DIR__ . '/../..' . '/app/Http/Controllers/DownloadController.php',
+        'App\\Http\\Controllers\\api\\DeviceController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/DeviceController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -421,13 +435,16 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Resources\\Content' => __DIR__ . '/../..' . '/app/Http/Resources/Content.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Publisher' => __DIR__ . '/../..' . '/app/Publisher.php',
         'App\\Token' => __DIR__ . '/../..' . '/app/Token.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\UserHasContent' => __DIR__ . '/../..' . '/app/UserHasContent.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -3976,6 +3993,11 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Zarinpal\\Drivers\\DriverInterface' => __DIR__ . '/..' . '/zarinpal/zarinpal/src/Drivers/DriverInterface.php',
+        'Zarinpal\\Drivers\\RestDriver' => __DIR__ . '/..' . '/zarinpal/zarinpal/src/Drivers/RestDriver.php',
+        'Zarinpal\\Laravel\\Facade\\Zarinpal' => __DIR__ . '/..' . '/zarinpal/zarinpal/src/Laravel/Facade/Zarinpal.php',
+        'Zarinpal\\Laravel\\ZarinpalServiceProvider' => __DIR__ . '/..' . '/zarinpal/zarinpal/src/Laravel/ZarinpalServiceProvider.php',
+        'Zarinpal\\Zarinpal' => __DIR__ . '/..' . '/zarinpal/zarinpal/src/Zarinpal.php',
         'Zend\\Diactoros\\AbstractSerializer' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/AbstractSerializer.php',
         'Zend\\Diactoros\\CallbackStream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/CallbackStream.php',
         'Zend\\Diactoros\\Exception\\DeprecatedMethodException' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Exception/DeprecatedMethodException.php',
