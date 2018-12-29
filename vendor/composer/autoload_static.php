@@ -35,6 +35,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         array (
             'phpseclib\\' => 10,
         ),
+        'n' => 
+        array (
+            'nattaponra\\LaraWallet\\' => 22,
+        ),
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
@@ -127,6 +131,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Depsimon\\Wallet\\' => 16,
             'Defuse\\Crypto\\' => 14,
             'DeepCopy\\' => 9,
         ),
@@ -145,6 +150,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'phpseclib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+        'nattaponra\\LaraWallet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nattaponra/larawallet/src',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -338,6 +347,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
+        'Depsimon\\Wallet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/depsimon/laravel-wallet/src',
+        ),
         'Defuse\\Crypto\\' => 
         array (
             0 => __DIR__ . '/..' . '/defuse/php-encryption/src',
@@ -450,6 +463,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'ContentTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ContentTableSeeder.php',
+        'CreateSanBoxTransactionTable' => __DIR__ . '/..' . '/nattaponra/larawallet/src/database/migrations/2018_00_00_000001_create_san_box_transaction_table.php',
+        'CreateSanBoxWalletTable' => __DIR__ . '/..' . '/nattaponra/larawallet/src/database/migrations/2018_00_00_000000_create_sanbox_wallet_table.php',
+        'CreateTransactionTable' => __DIR__ . '/..' . '/nattaponra/larawallet/src/database/migrations/2018_00_00_000001_create_transaction_table.php',
+        'CreateWalletTable' => __DIR__ . '/..' . '/nattaponra/larawallet/src/database/migrations/2018_00_00_000000_create_wallet_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -497,6 +514,11 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Defuse\\Crypto\\KeyOrPassword' => __DIR__ . '/..' . '/defuse/php-encryption/src/KeyOrPassword.php',
         'Defuse\\Crypto\\KeyProtectedByPassword' => __DIR__ . '/..' . '/defuse/php-encryption/src/KeyProtectedByPassword.php',
         'Defuse\\Crypto\\RuntimeTests' => __DIR__ . '/..' . '/defuse/php-encryption/src/RuntimeTests.php',
+        'Depsimon\\Wallet\\HasWallet' => __DIR__ . '/..' . '/depsimon/laravel-wallet/src/HasWallet.php',
+        'Depsimon\\Wallet\\Transaction' => __DIR__ . '/..' . '/depsimon/laravel-wallet/src/Transaction.php',
+        'Depsimon\\Wallet\\Wallet' => __DIR__ . '/..' . '/depsimon/laravel-wallet/src/Wallet.php',
+        'Depsimon\\Wallet\\WalletFacade' => __DIR__ . '/..' . '/depsimon/laravel-wallet/src/WalletFacade.php',
+        'Depsimon\\Wallet\\WalletServiceProvider' => __DIR__ . '/..' . '/depsimon/laravel-wallet/src/WalletServiceProvider.php',
         'Doctrine\\Common\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector/Inflector.php',
         'Doctrine\\Common\\Lexer\\AbstractLexer' => __DIR__ . '/..' . '/doctrine/lexer/lib/Doctrine/Common/Lexer/AbstractLexer.php',
         'Doctrine\\Instantiator\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/ExceptionInterface.php',
@@ -4030,6 +4052,17 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Zend\\Diactoros\\Stream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Stream.php',
         'Zend\\Diactoros\\UploadedFile' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/UploadedFile.php',
         'Zend\\Diactoros\\Uri' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Uri.php',
+        'nattaponra\\LaraWallet\\Eloquent' => __DIR__ . '/..' . '/nattaponra/larawallet/src/Eloquent.php',
+        'nattaponra\\LaraWallet\\Exception\\LaraWalletException' => __DIR__ . '/..' . '/nattaponra/larawallet/src/Exception/LaraWalletException.php',
+        'nattaponra\\LaraWallet\\HasWallet' => __DIR__ . '/..' . '/nattaponra/larawallet/src/HasWallet.php',
+        'nattaponra\\LaraWallet\\LaraWalletServiceProvider' => __DIR__ . '/..' . '/nattaponra/larawallet/src/LaraWalletServiceProvider.php',
+        'nattaponra\\LaraWallet\\SanBoxMode\\HasSanBoxWallet' => __DIR__ . '/..' . '/nattaponra/larawallet/src/SanBoxMode/HasSanBoxWallet.php',
+        'nattaponra\\LaraWallet\\SanBoxMode\\SanBoxTransaction' => __DIR__ . '/..' . '/nattaponra/larawallet/src/SanBoxMode/SanBoxTransaction.php',
+        'nattaponra\\LaraWallet\\SanBoxMode\\SanBoxWallet' => __DIR__ . '/..' . '/nattaponra/larawallet/src/SanBoxMode/SanBoxWallet.php',
+        'nattaponra\\LaraWallet\\Transaction' => __DIR__ . '/..' . '/nattaponra/larawallet/src/Transaction.php',
+        'nattaponra\\LaraWallet\\Wallet' => __DIR__ . '/..' . '/nattaponra/larawallet/src/Wallet.php',
+        'nattaponra\\LaraWallet\\WalletFacade' => __DIR__ . '/..' . '/nattaponra/larawallet/src/LaraWalletFacade.php',
+        'nattaponra\\LaraWallet\\WalletInterface' => __DIR__ . '/..' . '/nattaponra/larawallet/src/WalletInterface.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlock\\Context' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',
         'phpDocumentor\\Reflection\\DocBlock\\Description' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Description.php',

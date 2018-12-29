@@ -196,6 +196,18 @@ class ContentController extends Controller
     }
     
     public function showSearch(Request $request){
+        $user = Auth::user();
+        
+        $search = $request->s;
+        
+        $contents = Content::where('name', 'LIKE', $search.'%')
+                ->orwhere('desc', 'LIKE', $search.'%')
+                ->select('name')
+                ->orderBy('dl_count','desc')
+                ->take(10)
+                ->get();
+  
+        return response()->json( ['contents' => $contents], 200);   
         
     }
     
@@ -205,8 +217,9 @@ class ContentController extends Controller
         
         $search = $request->s;
         
-        $contents = Content::where('name', 'LIKE', '%'.$search.'%')
-                ->orwhere('desc', 'LIKE', '%'.$search.'%')
+        $contents = Content::where('name', 'LIKE', $search.'%')
+                ->orwhere('desc', 'LIKE', $search.'%')
+                
                 ->get();
        $c=[];
        $i=0;
