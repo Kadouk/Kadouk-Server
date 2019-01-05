@@ -44,6 +44,8 @@ return array(
     'Lcobucci\\JWT\\' => array($vendorDir . '/lcobucci/jwt/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
     'Laravel\\Passport\\' => array($vendorDir . '/laravel/passport/src'),
+    'Larabookir\\Gateway\\Tests\\' => array($vendorDir . '/larabook/gateway/tests'),
+    'Larabookir\\Gateway\\' => array($vendorDir . '/larabook/gateway/src'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),

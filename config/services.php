@@ -38,7 +38,7 @@ return [
     'zarinpal' => [
     'merchantID' => 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX',
     'zarinGate' => false,
-    'sandbox' => false,
+    'sandbox' => true,
     ],
 
 ];

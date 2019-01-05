@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,7 +42,12 @@ Route::post('/content/show/cat', 'API\ContentController@showCatContent');
 
 Route::post('get/version', 'API\DeviceController@getVersion');
 
-
+Route::post('payment', function(Request $request){
+//    return redirect(url('/aa'));
+    
+    
+        return response()->json(redirect(url('/aa'))); 
+});
 
 
 Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@imageDownload')

@@ -164,6 +164,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         Zarinpal\Laravel\ZarinpalServiceProvider::class,
+        Larabookir\Gateway\GatewayServiceProvider::class, // <-- add this line at the end of provider array
 
     ],
 
@@ -213,6 +214,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Gateway' => Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
 
     ],
 

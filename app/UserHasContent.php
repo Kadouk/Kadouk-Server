@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserHasContent extends Model
 {
     //
-    protected $table = 'users_has_contents';
+    protected $table = 'content_user';
     
     public function users()
     {
