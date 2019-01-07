@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\API;
 use Illuminate\Http\Request; 
 use App\Http\Controllers\Controller; 
-use App\User; 
 use App\Token; 
+use App\User; 
 use Illuminate\Support\Facades\Auth; 
 use Validator;
 class UserController extends Controller 
@@ -119,6 +119,7 @@ public $successStatus = 200;
             'phone' => 'required', 
             'gender' => 'required', 
             'birth' => 'required', 
+            'pass' => 'required',
             
         ]);
         if ($validator->fails()) { 
