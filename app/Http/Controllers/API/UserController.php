@@ -119,7 +119,6 @@ public $successStatus = 200;
             'phone' => 'required', 
             'gender' => 'required', 
             'birth' => 'required', 
-            'pass' => 'required',
             
         ]);
         if ($validator->fails()) { 
@@ -165,6 +164,23 @@ public $successStatus = 200;
         $user = User::byPhone($phone);
 
         return Token::generateFor($user);
+    }
+    
+    public function setPass(Request $request){
+        $user = Auth::user(); 
+        $validator = Validator::make($request->all(), [ 
+            'pass' => 'required', 
+
+        ]);
+        if ($validator->fails()) { 
+            return response()->json(['error'=>$validator->errors()], 401);            
+        }
+        
+        $input = $request->all(); 
+        $input['pass'] = bcrypt($input['pass']); 
+        $user->update($input);
+
+        return response()->json($this-> successStatus); 
     }
 
 
