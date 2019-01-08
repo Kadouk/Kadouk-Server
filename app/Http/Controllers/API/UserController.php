@@ -180,7 +180,8 @@ public $successStatus = 200;
         $input['pass'] = bcrypt($input['pass']); 
         $user->update($input);
 
-        return response()->json($this-> successStatus); 
+        $success['status'] =  200;
+        return response()->json($success, $this-> successStatus); 
     }
 
 
