@@ -178,7 +178,8 @@ public $successStatus = 200;
         
         $input = $request->all(); 
         $input['pass'] = bcrypt($input['pass']); 
-        $user->update($input);
+        User::find($user->id)->update($input);
+        //$user->update($input);
 
         $success['status'] =  200;
         return response()->json($user, $this-> successStatus); 
