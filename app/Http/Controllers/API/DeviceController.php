@@ -10,7 +10,12 @@ class DeviceController extends Controller
 {
     public $successStatus = 200;
     
-    //
+    /**
+     * Get api version of android devices and save 
+     * in devices table.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getVersion(Request $request){
         $validator = Validator::make($request->all(), [ 
             'version' => 'required',          

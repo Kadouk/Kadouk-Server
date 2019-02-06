@@ -49,4 +49,9 @@ class Content extends Model
         return $this->belongsToMany('App\User');
     }
     
+    public function catagory()
+    {
+        return $this->belongsTo('App\Catagory');
+    }
+    
 }

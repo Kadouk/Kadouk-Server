@@ -21,6 +21,9 @@ class Token extends Model
      */
     public static function generateFor(User $user)
     {
+        $min = pow(10, 4);
+        $max = $min * 10 - 1;
+        $code = mt_rand($min, $max);
         return static::create([
             'user_id' => $user->id,
             'code'   => $user->phone

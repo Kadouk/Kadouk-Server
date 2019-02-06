@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
 use App\User; 
 use App\Content;
+use App\Catagory;
 use App\ContentImage;
 use Illuminate\Support\Facades\Auth; 
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
 {
@@ -171,19 +173,13 @@ class ContentController extends Controller
             $contents = Content::where('catagory_id', $catID)
                     ->take($num)
                     ->get();
-        }
-        else{
-            $contents = Content::where('catagory_id', $catID)
-                    ->get();
-        }
-        
-       $c=[];
+            $c=[];
        $i=0;
        
         foreach($contents as $content)
         {
             $image = $content->image->path;
-            
+//            
             if($content->image){
                 $content = $content->toArray();
                 $content['image']=$image;
@@ -192,8 +188,72 @@ class ContentController extends Controller
                 $i++;
             }
         }
-        return response()->json( ['contents' => $c, 'catName' => $catName], 200);       
+        }
+        else{
+            $contents = Content::where('catagory_id', $catID)
+                    ->get();
+            $c=[];
+       $i=0;
+       
+        foreach($contents as $content)
+        {
+            $image = $content->image->path;
+//            
+            if($content->image){
+                $content = $content->toArray();
+                $content['image']=$image;
+                $c[$i]=$content;
+
+                $i++;
+            }
+        }
+        }
+        $d = [];
+        $j=0;
+        if($catID==-1){
+            
+            
+            for($k=1;$k<6;$k++){
+                $cat = \App\Catagory::where('id', $k)->first();
+        if($cat){
+            $catName = $cat->name;
+        }
+        else{
+            $catName = "سایر";
+        }
+           $contents = Content::where('catagory_id', $k)
+                    ->get();
+           $c=[];
+       $i=0;
+       
+        foreach($contents as $content)
+        {
+            $image = $content->image->path;
+//            
+            if($content->image){
+                $content = $content->toArray();
+                $content['image']=$image;
+                $c[$i]=$content;
+
+                $i++;
+            }
+            //$c['catName']=$catName;
+        }
+        
+        $d[$j] = ['contents' => $c, 'catName' => $catName]; 
+        $j++;
+            }
+            
+            return response()->json( ['cats' => $d], 200);     
+        }
+        
+       
+        
+        
+        return response()->json( ['contents' => $d, 'catName' => $catName], 200);       
     }
+    
+    
     
     public function showSearch(Request $request){
         $user = Auth::user();
@@ -249,5 +309,9 @@ class ContentController extends Controller
                 ->get();
 
         return response()->json( ['contents' => $contents], 200);
+    }
+    
+    public function ageFilter(Request $request){
+        
     }
 }

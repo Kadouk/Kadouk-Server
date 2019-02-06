@@ -13,7 +13,7 @@
 //use Zarinpal\Zarinpal;
 use App\User;
 use Illuminate\Http\Request;
-use Zarinpal\Laravel\Facade\Zarinpal;
+
 use Illuminate\Support\Facades\Auth; 
 Route::get('/', function () {
     return view('welcome');
