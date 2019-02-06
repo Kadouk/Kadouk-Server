@@ -250,7 +250,7 @@ class ContentController extends Controller
        
         
         
-        return response()->json( ['contents' => $d, 'catName' => $catName], 200);       
+        return response()->json( ['contents' => $c, 'catName' => $catName], 200);       
     }
     
     
