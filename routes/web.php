@@ -215,3 +215,11 @@ Route::get('/', function () {
 //$user->deposit(100, 'deposit', ['stripe_source' => 'ch_BEV2Iih1yzbf4G3HNsfOQ07h', 'description' => 'Deposit of 100 credits from Stripe Payment']);
 //$user->withdraw(10, 'withdraw', ['description' => 'Purchase of Item #1234']);
  });
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+ Route::get('/sms', function () {
+    Smsirlaravel::send('test1','09393212551');
+});
+ 

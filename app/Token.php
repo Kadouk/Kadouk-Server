@@ -26,7 +26,7 @@ class Token extends Model
         $code = mt_rand($min, $max);
         return static::create([
             'user_id' => $user->id,
-            'code'   => $user->id.$code
+            'code'   => $user->id . $code
         ]);
     }
 

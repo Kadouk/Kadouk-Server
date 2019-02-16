@@ -6,9 +6,12 @@ use App\Token;
 use App\User; 
 use Illuminate\Support\Facades\Auth; 
 use Validator;
+use Smsirlaravel;
 class UserController extends Controller 
 {
 public $successStatus = 200;
+
+public $sms_text = 'کد فعال سازی شما در کدوک: ';
 
     
     /** 
@@ -31,7 +34,11 @@ public $successStatus = 200;
            $user = User::create($input); 
             
         }
-        $this->invite($request->phone);
+        $invite_code = $this->invite($request->phone);
+        
+        $sms = $this->sms_text . $invite_code->code;
+//        return $sms;
+        Smsirlaravel::send($sms, $request->phone);
             
         $success['status'] =  200;
         return response()->json($success, $this-> successStatus); 
@@ -151,7 +158,7 @@ public $successStatus = 200;
      */
     public function invite($phone)
     {
-        $this->createToken($phone);
+        return $this->createToken($phone);
     }
 
     /**

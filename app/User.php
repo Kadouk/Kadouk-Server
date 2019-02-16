@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use Depsimon\Wallet\HasWallet;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
     use Notifiable, HasApiTokens, HasWallet;
 

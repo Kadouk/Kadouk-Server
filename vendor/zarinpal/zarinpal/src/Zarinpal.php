@@ -96,6 +96,14 @@ class Zarinpal
     }
 
     /**
+     * @return string
+     */
+    public function redirectUrl()
+    {
+        return sprintf($this->redirectUrl, $this->Authority);
+    }
+
+    /**
      * @return DriverInterface
      */
     public function getDriver()
