@@ -10,6 +10,7 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/ContentFile.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/routes/web.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Publisher.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/smsirlaravel.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Device.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/DownloadController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/app.php</file>
@@ -30,7 +31,9 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Content.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/DeviceController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/auth.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/composer.json</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/ContentImage.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/database/migrations/2014_10_12_000000_create_users_table.php</file>
         </group>
     </open-files>
 </project-private>

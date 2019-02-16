@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth; 
 use Validator;
 use Smsirlaravel;
+use Illuminate\Support\Carbon;
 class UserController extends Controller 
 {
 public $successStatus = 200;
@@ -22,6 +23,8 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
      * @return \Illuminate\Http\Response 
      */ 
     public function getPhone(Request $request) { 
+        
+        $expired = false;
         $validator = Validator::make($request->all(), [ 
             'phone' => 'required',          
         ]);
@@ -34,14 +37,34 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
            $user = User::create($input); 
             
         }
-        $invite_code = $this->invite($request->phone);
+        else{
+            $user = User::byPhone($request->phone);
+        }
         
-        $sms = $this->sms_text . $invite_code->code;
-//        return $sms;
-        Smsirlaravel::send($sms, $request->phone);
+        
+        if(!$user->hasToken() || 
+               $user->hasToken()->latest()->first()->
+                created_at->diffInMinutes(Carbon::now()) > 5 ){
+            $invite_code = $this->invite($request->phone);
+        
+            $sms = $this->sms_text . $invite_code->code;
+            Smsirlaravel::send($sms, $request->phone);
             
-        $success['status'] =  200;
-        return response()->json($success, $this-> successStatus); 
+            $success['status'] =  200;
+            return response()->json($success, $this-> successStatus); 
+        }
+        // code was sent less than 5 mins.
+        $success['status'] =  100;
+            return response()->json($success, $this-> successStatus);
+        
+//        $this->created_at;
+        
+ 
+        
+        
+        
+            
+        
 
         
     }

@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
     
      /**
-     * Retrieve a user by their phone number.
+     * 
      *
      * @param  string $phone
      * @return $this
@@ -67,5 +67,10 @@ class User extends Authenticatable
     public function contents()
     {
         return $this->belongsToMany('App\Content');
+    }
+    
+    public function hasToken()
+    {
+        return $this->hasMany('App\Token');
     }
 }
