@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "217ebec54dd4c352c0bb5e1c42f90c9a",
+    "content-hash": "3ece89638558e8144c27068103b2f3ff",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -713,6 +713,53 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "ipecompany/smsirlaravel",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IPeCompany/SmsirLaravel.git",
+                "reference": "eb28b1d88f06baa22c267a410f2c6a95002488a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IPeCompany/SmsirLaravel/zipball/eb28b1d88f06baa22c267a410f2c6a95002488a8",
+                "reference": "eb28b1d88f06baa22c267a410f2c6a95002488a8",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "symfony/psr-http-message-bridge": "1.*.*",
+                "zendframework/zend-diactoros": "1.*.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ipecompany\\Smsirlaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "moein.alizadeh",
+                    "email": "moein.alizade@gmail.com"
+                }
+            ],
+            "description": "Official Sms.ir Laravel Package",
+            "keywords": [
+                "laravel",
+                "notifacation",
+                "sendsms",
+                "sms",
+                "sms.ir",
+                "اس ام اس",
+                "پیامک"
+            ],
+            "time": "2018-12-12T06:14:10+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

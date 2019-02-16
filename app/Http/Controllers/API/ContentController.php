@@ -154,6 +154,17 @@ class ContentController extends Controller
         
     }
     
+    /**
+     * Send all catagories in case that cat is -1
+     *  and send one catagory when cat is catagory id.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $cat
+     * @param  int  $num
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    
     public function showCatContent(Request $request){
         
         $user = Auth::user();
@@ -161,6 +172,7 @@ class ContentController extends Controller
         $catID = $request->cat;
         $num = $request->num;
         
+
         $cat = \App\Catagory::where('id', $catID)->first();
         if($cat){
             $catName = $cat->name;
@@ -211,7 +223,7 @@ class ContentController extends Controller
         $d = [];
         $j=0;
         if($catID==-1){
-            
+//             $count = \App\Catagory::where('id', $catID)->first();
             
             for($k=1;$k<6;$k++){
                 $cat = \App\Catagory::where('id', $k)->first();

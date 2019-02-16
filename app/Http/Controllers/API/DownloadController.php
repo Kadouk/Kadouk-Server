@@ -36,6 +36,11 @@ class DownloadController extends Controller
         
     }
     
+    public function checkUpdate(Request $request){
+        
+        
+    }
+    
     public function imageDownload($publisher_id, $content_type, $content_id, $filename){
 
         $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);

@@ -153,6 +153,7 @@ return [
          */
         
         'F2m2\Apidocs\ApidocsServiceProvider',
+        Ipecompany\Smsirlaravel\SmsirlaravelServiceProvider::class,
 	
         /*
          * Application Service Providers...
@@ -215,6 +216,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Gateway' => Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
+        'Smsirlaravel' => Ipecompany\Smsirlaravel\SmsirlaravelFacade::class,
 
     ],
 

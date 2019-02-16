@@ -1003,6 +1003,55 @@
         ]
     },
     {
+        "name": "ipecompany/smsirlaravel",
+        "version": "v1.0.7",
+        "version_normalized": "1.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/IPeCompany/SmsirLaravel.git",
+            "reference": "eb28b1d88f06baa22c267a410f2c6a95002488a8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/IPeCompany/SmsirLaravel/zipball/eb28b1d88f06baa22c267a410f2c6a95002488a8",
+            "reference": "eb28b1d88f06baa22c267a410f2c6a95002488a8",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "~6.0",
+            "symfony/psr-http-message-bridge": "1.*.*",
+            "zendframework/zend-diactoros": "1.*.*"
+        },
+        "time": "2018-12-12T06:14:10+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Ipecompany\\Smsirlaravel\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "moein.alizadeh",
+                "email": "moein.alizade@gmail.com"
+            }
+        ],
+        "description": "Official Sms.ir Laravel Package",
+        "keywords": [
+            "laravel",
+            "notifacation",
+            "sendsms",
+            "sms",
+            "sms.ir",
+            "اس ام اس",
+            "پیامک"
+        ]
+    },
+    {
         "name": "jakub-onderka/php-console-color",
         "version": "0.1",
         "version_normalized": "0.1.0.0",

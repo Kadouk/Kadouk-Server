@@ -109,6 +109,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         ),
         'I' => 
         array (
+            'Ipecompany\\Smsirlaravel\\' => 24,
             'Illuminate\\' => 11,
         ),
         'G' => 
@@ -308,6 +309,10 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Larabookir\\Gateway\\' => 
         array (
             0 => __DIR__ . '/..' . '/larabook/gateway/src',
+        ),
+        'Ipecompany\\Smsirlaravel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src',
         ),
         'Illuminate\\' => 
         array (
@@ -1989,6 +1994,11 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Ipecompany\\Smsirlaravel\\Controllers\\SmsirlaravelController' => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src/Controllers/SmsirlaravelController.php',
+        'Ipecompany\\Smsirlaravel\\Smsirlaravel' => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src/Smsirlaravel.php',
+        'Ipecompany\\Smsirlaravel\\SmsirlaravelFacade' => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src/SmsirlaravelFacade.php',
+        'Ipecompany\\Smsirlaravel\\SmsirlaravelLogs' => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src/models/SmsirlaravelLogs.php',
+        'Ipecompany\\Smsirlaravel\\SmsirlaravelServiceProvider' => __DIR__ . '/..' . '/ipecompany/smsirlaravel/src/SmsirlaravelServiceProvider.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
