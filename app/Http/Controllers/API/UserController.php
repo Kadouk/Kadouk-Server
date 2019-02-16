@@ -24,7 +24,7 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
      */ 
     public function getPhone(Request $request) { 
         
-        $expired = false;
+//        $expired = false;
         $validator = Validator::make($request->all(), [ 
             'phone' => 'required',          
         ]);
@@ -41,14 +41,13 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
             $user = User::byPhone($request->phone);
         }
         
-        
         if(!$user->hasToken() || 
                $user->hasToken()->latest()->first()->
                 created_at->diffInMinutes(Carbon::now()) > 5 ){
             $invite_code = $this->invite($request->phone);
         
             $sms = $this->sms_text . $invite_code->code;
-            Smsirlaravel::send($sms, $request->phone);
+//            Smsirlaravel::send($sms, $request->phone);
             
             $success['status'] =  200;
             return response()->json($success, $this-> successStatus); 
@@ -57,18 +56,43 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
         $success['status'] =  100;
             return response()->json($success, $this-> successStatus);
         
-//        $this->created_at;
-        
- 
-        
-        
-        
-            
-        
-
-        
     }
     
+    
+    
+    
+    /**
+     * Prepare a log in token for the user.
+     *
+     * @return \Illumiate\Http\Response 
+     */
+    public function postLogin(Request $request)
+    {
+        $phone = $request->phone;
+        $token = $request->code;
+        
+        $code = Token::byCode($token);
+        
+        if($code){
+//            if($code->used == 1){
+//                return response()->json(['error'=>'Code Used'], $this-> successStatus); 
+//            }
+//            $user = $this->getCode($code);
+            $user = $code->user;
+            if($user && $user->phone == $phone){
+                  $code->delete();
+                  return $this->login($user);  
+                
+            }
+            
+            else{
+                return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
+            }
+        }
+        else{
+            return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
+            }
+    }
     
     /** 
     * login api 
@@ -100,35 +124,6 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
     {
         return $code->user;
     }
-    
-    /**
-     * Prepare a log in token for the user.
-     *
-     * @return \Illumiate\Http\Response 
-     */
-    public function postLogin(Request $request)
-    {
-        $phone = $request->phone;
-        $token = $request->code;
-        
-        $code = Token::byCode($token);
-        
-        if($code){
-            $user = $this->getCode($code);
-            if($user && $user->phone == $phone){
-                  return $this->login($user);  
-                
-            }
-            else{
-                return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
-            }
-        }
-        else{
-            return response()->json(['error'=>'Wrong Code'], $this-> successStatus); 
-            }
-    }
-    
-    
     
     
 
