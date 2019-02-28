@@ -54,4 +54,11 @@ class Content extends Model
         return $this->belongsTo('App\Catagory');
     }
     
+     public function age()
+    {
+//         if($this->low_age<7)
+//             return$this->belongsTo('App\Catagory');
+//        return static::where('low_age', '>=' ,7)->where('high_age', '<=' ,7)->get();
+    }
+    
 }

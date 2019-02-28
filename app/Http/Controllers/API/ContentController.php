@@ -10,6 +10,7 @@ use App\Catagory;
 use App\ContentImage;
 use Illuminate\Support\Facades\Auth; 
 use Validator;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller
@@ -168,7 +169,8 @@ class ContentController extends Controller
     public function showCatContent(Request $request){
         
         $user = Auth::user();
-        
+        $user = User::where('phone', '09393212551')->first();
+//        return $user->birth;
         $catID = $request->cat;
         $num = $request->num;
         
@@ -202,8 +204,9 @@ class ContentController extends Controller
         }
         }
         else{
-            $contents = Content::where('catagory_id', $catID)
-                    ->get();
+            $contents = $this->ageFilter($user, $catID);
+//            $contents = Content::where('catagory_id', $catID)
+//                    ->get();
             $c=[];
        $i=0;
        
@@ -219,9 +222,14 @@ class ContentController extends Controller
                 $i++;
             }
         }
+        
         }
+        
+        
         $d = [];
         $j=0;
+        
+        
         if($catID==-1){
 //             $count = \App\Catagory::where('id', $catID)->first();
             
@@ -233,8 +241,10 @@ class ContentController extends Controller
         else{
             $catName = "سایر";
         }
-           $contents = Content::where('catagory_id', $k)
-                    ->get();
+//           $contents = Content::where('catagory_id', $k)
+//                    ->get();
+        $contents = $this->ageFilter($user, $k);
+           
            $c=[];
        $i=0;
        
@@ -293,6 +303,7 @@ class ContentController extends Controller
                 ->orwhere('desc', 'LIKE', $search.'%')
                 
                 ->get();
+//        $contents->age;
        $c=[];
        $i=0;
        
@@ -323,7 +334,22 @@ class ContentController extends Controller
         return response()->json( ['contents' => $contents], 200);
     }
     
-    public function ageFilter(Request $request){
+    public function ageFilter($user, $id){
+        $birth = $this->changeDate($user->birth);
+        $age = Carbon::parse($birth)->age;
+        
+        $contents = Content::where('catagory_id', $id)->
+                where('low_age', '<=', $age)->where('high_age', '>=', $age)
+                ->get();
+         return $contents;          
+    }
+    
+    public function changeDate($date){
+		$f           = explode("/", $date);
+
+		$d      = \Morilog\Jalali\CalendarUtils::toGregorian($f[0], $f[1], $f[2]);
+		$f_date = $d[0].'-'.$d[1].'-'.$d[2];
+        return $f_date;
         
     }
 }

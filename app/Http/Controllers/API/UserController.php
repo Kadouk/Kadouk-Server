@@ -58,7 +58,25 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
         
     }
     
-    
+    /**
+     * Send a sign in invitation to the user.
+     */
+    public function invite($phone)
+    {
+        return $this->createToken($phone);
+    }
+
+    /**
+     * Prepare a log in token for the user.
+     *
+     * @return LoginToken
+     */
+    protected function createToken($phone)
+    {
+        $user = User::byPhone($phone);
+
+        return Token::generateFor($user);
+    }
     
     
     /**
@@ -113,21 +131,7 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
             return response()->json(['error'=>'Not Register'], $this-> successStatus); 
         }
     }
-    
-    
-    /**
-     * Prepare a log in token for the user.
-     *
-     * @return LoginToken
-     */
-    protected function getCode(Token $code)
-    {
-        return $code->user;
-    }
-    
-    
-
-        
+       
     /** 
      * Register api 
      * POST /register/
@@ -171,25 +175,7 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
         return response()->json( $user, $this-> successStatus); 
     } 
     
-    /**
-     * Send a sign in invitation to the user.
-     */
-    public function invite($phone)
-    {
-        return $this->createToken($phone);
-    }
-
-    /**
-     * Prepare a log in token for the user.
-     *
-     * @return LoginToken
-     */
-    protected function createToken($phone)
-    {
-        $user = User::byPhone($phone);
-
-        return Token::generateFor($user);
-    }
+    
     
     public function setPass(Request $request){
         $user = Auth::user(); 
@@ -210,6 +196,17 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
         $success['status'] =  200;
         return response()->json($success, $this-> successStatus); 
     }
+    
+    
+        /**
+     * Prepare a log in token for the user.
+     *
+     * @return LoginToken
+     */
+//    protected function getCode(Token $code)
+//    {
+//        return $code->user;
+//    }
 
 
 }
