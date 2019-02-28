@@ -47,7 +47,7 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
             $invite_code = $this->invite($request->phone);
         
             $sms = $this->sms_text . $invite_code->code;
-//            Smsirlaravel::send($sms, $request->phone);
+            Smsirlaravel::send($sms, $request->phone);
             
             $success['status'] =  200;
             return response()->json($success, $this-> successStatus); 

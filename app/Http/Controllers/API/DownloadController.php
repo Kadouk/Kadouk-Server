@@ -60,9 +60,10 @@ class DownloadController extends Controller
         
         $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
         if (file_exists($file_path)){
+            $size = Storage::size($file_path);
             $content = \App\Content::find($content_id);
             $content->users()->attach($user);
-            return Response()->file($file_path);
+            return Response()->file($file_path)->header('Content-Length',$size );
         }
         else{
             exit('Requested file does not exist on our server!');
