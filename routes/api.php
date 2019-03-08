@@ -25,8 +25,7 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
     Route::post('/download/history/show', 'API\DownloadController@showHistory');
-    Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@apkDownload')
-            ->where('filename', '[A-Za-z0-9\-\_\.]+');
+    
     
     Route::post('pass', 'API\UserController@setPass');
 });
@@ -54,6 +53,7 @@ Route::post('payment', function(Request $request){
 
 Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@imageDownload')
 ->where('filename', '[A-Za-z0-9\-\_\.]+');
-
+Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@apkDownload')
+            ->where('filename', '[A-Za-z0-9\-\_\.]+');
 
 

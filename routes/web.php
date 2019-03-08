@@ -1,31 +1,122 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
+
 //use Zarinpal\Zarinpal;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Support\Facades\Auth; 
 Route::get('/', function () {
     return view('welcome');
 });
 
- Route::get('docs', function(){
-    return View::make('docs.api.index');
- });
- 
- Route::get('/test', 'API\ContentController@show');
+Route::get('/up', function () {
+    $content = \App\Content::create();
+    $contents = \App\Content::whereIn('id', explode(",", $content->id))->get();
+    return view('test_upload',compact('contents'));
+});
 
-  Route::get('bb', function(Request $request){
+Route::post('/upload/image/{id}', function (Request $request, $id) {
+
+    $photos = [];
+    foreach ($request->photos as $photo) {
+//        $content = \App\Content::create();
+        //get filename with extension
+        $filenamewithextension = $photo->getClientOriginalName();
+
+        //get filename without extension
+        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+        //get file extension
+        $extension = $photo->getClientOriginalExtension();
+
+        //filename to store
+        $filenametostore = $filename . '_' . uniqid() . '.' . $extension;
+
+        //Upload File to external server
+        Storage::disk('ftp')->put('game/1/app/'. $id. '/'. $filenametostore, fopen($photo, 'r+'));
+
+        $product_photo = \App\ContentImage::create([
+                    'path' => 'game/1/app/'. $id. '/'.$filenametostore,
+                    'content_id' => $id
+        ]);
+
+        $photo_object = new \stdClass();
+        $photo_object->name = str_replace('photos/', '', $photo->getClientOriginalName());
+        $photo_object->size = round(filesize($photo) / 1024, 2);
+        $photo_object->fileID = $product_photo->id;
+        $photo_object->content_id = $id;
+        $photos[] = $photo_object;
+    }
+
+    return response()->json(array('files' => $photos), 200);
+});
+
+Route::post('submit/content/{id}', function(Request $request,$id) {
+//        $content = \App\Content::create($request->all());
+        $content= \App\Content::find($id);
+        $content->update($request->all());
+        
+
+        
+});
+
+Route::post('/upload/apk/{id}', function (Request $request, $id) {
+
+    $photos = [];
+    foreach ($request->photos as $photo) {
+//        $content = \App\Content::create();
+        //get filename with extension
+        $filenamewithextension = $photo->getClientOriginalName();
+
+        //get filename without extension
+        $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+        //get file extension
+        $extension = $photo->getClientOriginalExtension();
+
+        //filename to store
+        $filenametostore = $filename . '_' . uniqid() . '.' . $extension;
+
+        //Upload File to external server
+        Storage::disk('ftp')->put('game/1/app/'. $id. '/'. $filenametostore, fopen($photo, 'r+'));
+
+        $product_photo = \App\ContentFile::create([
+                    'path' => 'game/1/app/'. $id. '/'.$filenametostore,
+                    'content_id' => $id
+        ]);
+
+        $photo_object = new \stdClass();
+        $photo_object->name = str_replace('photos/', '', $photo->getClientOriginalName());
+        $photo_object->size = round(filesize($photo) / 1024, 2);
+        $photo_object->fileID = $product_photo->id;
+        $photo_object->content_id = $id;
+        $photos[] = $photo_object;
+    }
+
+    return response()->json(array('files' => $photos), 200);
+});
+
+Route::get('get/cat', 'API\CatagoryController@getCat');
+
+Route::get('docs', function() {
+    return View::make('docs.api.index');
+});
+
+// Route::get('/test', 'API\ContentController@show');
+
+Route::get('bb', function(Request $request) {
 // $transaction = \App\Transaction::where('transaction_id',$request->get('Authority'))->first();
 // 
 //Zarinpal::verify('OK',$transaction->price,$request->Authority);
@@ -33,46 +124,41 @@ Route::get('/', function () {
 //echo $request['Authority'];
 //$transaction->status = $request->Status;
 //$transaction->save();
-      
-      try { 
-   
-   $gateway = \Gateway::verify();
-   $trackingCode = $gateway->trackingCode();
-   $refId = $gateway->refId();
-   $cardNumber = $gateway->cardNumber();
-   $transaction = \App\Transaction::where('transaction_id',$refId)->first();
-   $transaction->status = 'OK';
-   $transaction->save();
-   
 
-            
-           $user_content = new \App\UserHasContent;
-            $user_content->content_id = $transaction->content_id;
-            $user_content->user_id = 6;
-            $user_content->payed = 1;
-            $user_content->save();
-    // تراکنش با موفقیت سمت بانک تایید گردید
-    // در این مرحله عملیات خرید کاربر را تکمیل میکنیم
+    try {
 
-} catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
+        $gateway = \Gateway::verify();
+        $trackingCode = $gateway->trackingCode();
+        $refId = $gateway->refId();
+        $cardNumber = $gateway->cardNumber();
+        $transaction = \App\Transaction::where('transaction_id', $refId)->first();
+        $transaction->status = 'OK';
+        $transaction->save();
 
-    // تراکنش قبلا سمت بانک تاییده شده است و
-    // کاربر احتمالا صفحه را مجددا رفرش کرده است
-    // لذا تنها فاکتور خرید قبل را مجدد به کاربر نمایش میدهیم
-    
-    echo $e->getMessage() . "<br>";
-    
-    
-} catch (\Exception $e) {
-   
-    // نمایش خطای بانک
-    echo $e->getMessage();
-    
-}  
 
-  });
- Route::get('aa', function(Request $request){
- 
+
+        $user_content = new \App\UserHasContent;
+        $user_content->content_id = $transaction->content_id;
+        $user_content->user_id = 6;
+        $user_content->payed = 1;
+        $user_content->save();
+        // تراکنش با موفقیت سمت بانک تایید گردید
+        // در این مرحله عملیات خرید کاربر را تکمیل میکنیم
+    } catch (\Larabookir\Gateway\Exceptions\RetryException $e) {
+
+        // تراکنش قبلا سمت بانک تاییده شده است و
+        // کاربر احتمالا صفحه را مجددا رفرش کرده است
+        // لذا تنها فاکتور خرید قبل را مجدد به کاربر نمایش میدهیم
+
+        echo $e->getMessage() . "<br>";
+    } catch (\Exception $e) {
+
+        // نمایش خطای بانک
+        echo $e->getMessage();
+    }
+});
+Route::get('aa', function(Request $request) {
+
 //$zarinpal = new Zarinpal('XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX');
 //$zarinpal->enableSandbox(); // active sandbox mod for test env
 //// $zarinpal->isZarinGate(); // active zarinGate mode
@@ -133,46 +219,44 @@ Route::get('/', function () {
 //
 //// after that verify transaction by that $results['Authority']
 //Zarinpal::verify('OK',1000,$results['Authority']);
-     
 //   //////////  
 //     $user = Auth::user(); 
-     $price = $request->get('price');
-     $content_id = $request->get('content_id');
-     
-     if(\App\Content::find($content_id)->cost == $price){
-     
+    $price = $request->get('price');
+    $content_id = $request->get('content_id');
+
+    if (\App\Content::find($content_id)->cost == $price) {
+
         try {
 
-           //$gateway = \Gateway::make(new \Zarinpal());
-           $gateway = Gateway::make(new Larabookir\Gateway\Zarinpal\Zarinpal());
+            //$gateway = \Gateway::make(new \Zarinpal());
+            $gateway = Gateway::make(new Larabookir\Gateway\Zarinpal\Zarinpal());
             $gateway->setCallback(url('/bb')); //You can also change the callback
-           $gateway
-                ->price($price)
-                // setShipmentPrice(10) // optional - just for paypal
-                // setProductName("My Product") // optional - just for paypal
-                ->ready();
+            $gateway
+                    ->price($price)
+                    // setShipmentPrice(10) // optional - just for paypal
+                    // setProductName("My Product") // optional - just for paypal
+                    ->ready();
 
-           $refId =  $gateway->refId(); // شماره ارجاع بانک
-           $transID = $gateway->transactionId(); // شماره تراکنش
+            $refId = $gateway->refId(); // شماره ارجاع بانک
+            $transID = $gateway->transactionId(); // شماره تراکنش
             $transaction = new \App\Transaction;
             $transaction->transaction_id = $refId;
             $transaction->user_id = 6;
             $transaction->price = $price;
             $transaction->content_id = $content_id;
             $transaction->save();
-           //return $refId . '+++' . $transID;
-          // در اینجا
-          //  شماره تراکنش  بانک را با توجه به نوع ساختار دیتابیس تان 
-          //  در جداول مورد نیاز و بسته به نیاز سیستم تان
-          // ذخیره کنید .
+            //return $refId . '+++' . $transID;
+            // در اینجا
+            //  شماره تراکنش  بانک را با توجه به نوع ساختار دیتابیس تان 
+            //  در جداول مورد نیاز و بسته به نیاز سیستم تان
+            // ذخیره کنید .
 
-           return $gateway->redirect();
-
+            return $gateway->redirect();
         } catch (\Exception $e) {
 
-                echo $e->getMessage();
+            echo $e->getMessage();
         }
-     }
+    }
 //    $MerchantID = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX';  //Required
 //    $Amount = 1000; //Amount will be based on Toman  - Required
 //    $Description = 'توضیحات تراکنش تستی';  // Required
@@ -198,8 +282,6 @@ Route::get('/', function () {
 //    } else {
 //        echo'ERR: '.$result->Status;
 //    }
-
-
 //$user = User::find(6);
 //$user->balance; // 0
 //
@@ -214,12 +296,10 @@ Route::get('/', function () {
 //$user = User::find(6);
 //$user->deposit(100, 'deposit', ['stripe_source' => 'ch_BEV2Iih1yzbf4G3HNsfOQ07h', 'description' => 'Deposit of 100 credits from Stripe Payment']);
 //$user->withdraw(10, 'withdraw', ['description' => 'Purchase of Item #1234']);
- });
+});
 //Auth::routes();
-
 //Route::get('/home', 'HomeController@index')->name('home');
 
- Route::get('/sms', function () {
-    Smsirlaravel::send('test1','09393212551');
+Route::get('/sms', function () {
+    Smsirlaravel::send('test1', '09393212551');
 });
- 

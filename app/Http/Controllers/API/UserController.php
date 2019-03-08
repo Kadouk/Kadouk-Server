@@ -40,10 +40,9 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
         else{
             $user = User::byPhone($request->phone);
         }
-        
-        if(!$user->hasToken() || 
-               $user->hasToken()->latest()->first()->
-                created_at->diffInMinutes(Carbon::now()) > 5 ){
+        // return $user->hasToken()->first();
+        if(!$user->hasToken()->first() ){
+			// return "aa";
             $invite_code = $this->invite($request->phone);
         
             $sms = $this->sms_text . $invite_code->code;
@@ -52,6 +51,18 @@ public $sms_text = 'کد فعال سازی شما در کدوک: ';
             $success['status'] =  200;
             return response()->json($success, $this-> successStatus); 
         }
+		else if($user->hasToken()->first() ){
+			if($user->hasToken()->latest()->first()->
+                created_at->diffInMinutes(Carbon::now()) > 5){
+					$invite_code = $this->invite($request->phone);
+        
+            $sms = $this->sms_text . $invite_code->code;
+            Smsirlaravel::send($sms, $request->phone);
+            
+            $success['status'] =  200;
+            return response()->json($success, $this-> successStatus); 
+				}
+		}
         // code was sent less than 5 mins.
         $success['status'] =  100;
             return response()->json($success, $this-> successStatus);

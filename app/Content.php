@@ -13,7 +13,12 @@ class Content extends Model
         'name',
         'desc',
         'catagory_id',
-        'publisher_id'
+        'publisher_id',
+        'high_age',
+        'low_age',
+        'tag',
+        'size',
+        'version'
     ];
     
     protected $hidden = [
