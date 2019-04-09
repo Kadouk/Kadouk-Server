@@ -68,7 +68,7 @@ Route::post('submit/content/{id}', function(Request $request,$id) {
         $content= \App\Content::find($id);
         $content->update($request->all());
         
-return View::make('test_upload');
+        return View::make('test_upload');
         
 });
 
