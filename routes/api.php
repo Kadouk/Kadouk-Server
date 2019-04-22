@@ -57,3 +57,5 @@ Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}',
             ->where('filename', '[A-Za-z0-9\-\_\.]+');
 
 
+Route::post('/update/kadouk', 'API\AppController@idex');
+
