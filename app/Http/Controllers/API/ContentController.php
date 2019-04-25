@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller; 
-use App\User; 
+use App\Http\Controllers\Controller;
+use App\User;
 use App\Content;
 use App\Catagory;
 use App\ContentImage;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class ContentController extends Controller
-{
+class ContentController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -30,8 +29,7 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -41,8 +39,7 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -52,39 +49,35 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
-    {
+    public function show(Request $request) {
         $user = Auth::user();
         $contents = Content::all();
-       $c=[];
-       $i=0;
-        foreach($contents as $content)
-        {
-            
+        $c = [];
+        $i = 0;
+        foreach ($contents as $content) {
+
             $image = $content->image->path;
             //echo $image;
             //if($image)
-           // echo $image->path;
+            // echo $image->path;
             //if($image)
-              // $image = $image->toArray();
+            // $image = $image->toArray();
             //$content = $content->toArray();
-            
             //echo $content->image;
             //echo $content->crossJoin($image);
-            if($content->image){
-               // echo $image->path;
-           // $content->pull($content->image);
-            $content = $content->toArray();
-            $content['image']=$image;
-            $c[$i]=$content;
-            //return $content;
-          //  echo $content;
-            $i++;
+            if ($content->image) {
+                // echo $image->path;
+                // $content->pull($content->image);
+                $content = $content->toArray();
+                $content['image'] = $image;
+                $c[$i] = $content;
+                //return $content;
+                //  echo $content;
+                $i++;
             }
         }
         //return $c;
-        return response()->json( ['contents' => $c], 200); 
-        
+        return response()->json(['contents' => $c], 200);
     }
 
     /**
@@ -93,8 +86,7 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -105,8 +97,7 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -116,45 +107,42 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
-    
-    public function showContent(Request $request){
+
+    public function showContent(Request $request) {
         $content = Content::find($request->id);
-                  
-            $image = $content->image->path;
-            $file = $content->file->path;
-            $media = $content->media;
-            
-            
-            //echo $image;
-            //if($image)
-           // echo $image->path;
-            //if($image)
-              // $image = $image->toArray();
-            //$content = $content->toArray();
-            
-            //echo $content->image;
-            //echo $content->crossJoin($image);
-            
-            if($content->image){
-               // echo $image->path;
-           // $content->pull($content->image);
+
+        $image = $content->image->path;
+        $file = $content->file->path;
+        $media = $content->media;
+
+
+        //echo $image;
+        //if($image)
+        // echo $image->path;
+        //if($image)
+        // $image = $image->toArray();
+        //$content = $content->toArray();
+        //echo $content->image;
+        //echo $content->crossJoin($image);
+
+        if ($content->image) {
+            // echo $image->path;
+            // $content->pull($content->image);
             $content = $content->toArray();
             //$c['media'] = $media;
-            $content['image']=$image;
-            $content['file']=$file;
+            $content['image'] = $image;
+            $content['file'] = $file;
             //$c[$i]=$content;
             //return $content;
-          //  echo $content;
-            }
+            //  echo $content;
+        }
         //return $c;
-        return response()->json(  $content, 200);
-        
+        return response()->json($content, 200);
     }
-    
+
     /**
      * Send all catagories in case that cat is -1
      *  and send one catagory when cat is catagory id.
@@ -165,191 +153,179 @@ class ContentController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    
-    public function showCatContent(Request $request){
-        
+    public function showCatContent(Request $request) {
+
         $user = Auth::user();
         $user = User::where('phone', '09393212551')->first();
+        
 //        return $user->birth;
         $catID = $request->cat;
         $num = $request->num;
-        
+
 
         $cat = \App\Catagory::where('id', $catID)->first();
-        if($cat){
+        if ($cat) {
             $catName = $cat->name;
-        }
-        else{
+        } else {
             $catName = "سایر";
         }
-        
-        if($num){
+
+        if ($num) {
             $contents = Content::where('catagory_id', $catID)
                     ->take($num)
                     ->get();
-            $c=[];
-       $i=0;
-       
-        foreach($contents as $content)
-        {
-            $image = $content->image->path;
-//            
-            if($content->image){
-                $content = $content->toArray();
-                $content['image']=$image;
-                $c[$i]=$content;
+            $c = [];
+            $i = 0;
 
-                $i++;
+            foreach ($contents as $content) {
+                $image = $content->image->path;
+//            
+                if ($content->image) {
+                    $content = $content->toArray();
+                    $content['image'] = $image;
+                    $c[$i] = $content;
+
+                    $i++;
+                }
+            }
+        } else {
+//            $contents = $this->ageFilter($user, $catID);
+            $contents = Content::where('catagory_id', $catID)
+                    ->get();
+            $c = [];
+            $i = 0;
+
+            foreach ($contents as $content) {
+                $image = $content->image->path;
+//            
+                if ($content->image) {
+                    $content = $content->toArray();
+                    $content['image'] = $image;
+                    $c[$i] = $content;
+
+                    $i++;
+                }
             }
         }
-        }
-        else{
-            $contents = $this->ageFilter($user, $catID);
-//            $contents = Content::where('catagory_id', $catID)
-//                    ->get();
-            $c=[];
-       $i=0;
-       
-        foreach($contents as $content)
-        {
-            $image = $content->image->path;
-//            
-            if($content->image){
-                $content = $content->toArray();
-                $content['image']=$image;
-                $c[$i]=$content;
 
-                $i++;
-            }
-        }
-        
-        }
-        
-        
+
         $d = [];
-        $j=0;
-        
-        
-        if($catID==-1){
-//             $count = \App\Catagory::where('id', $catID)->first();
-            
-            for($k=1;$k<6;$k++){
-                $cat = \App\Catagory::where('id', $k)->first();
-        if($cat){
-            $catName = $cat->name;
-        }
-        else{
-            $catName = "سایر";
-        }
-//           $contents = Content::where('catagory_id', $k)
-//                    ->get();
-        $contents = $this->ageFilter($user, $k);
-           
-           $c=[];
-       $i=0;
-       
-        foreach($contents as $content)
-        {
-            $image = $content->image->path;
-//            
-            if($content->image){
-                $content = $content->toArray();
-                $content['image']=$image;
-                $c[$i]=$content;
+        $j = 0;
 
-                $i++;
+
+        if ($catID == -1) {
+//             $count = \App\Catagory::where('id', $catID)->first();
+
+            for ($k = 1; $k < 6; $k++) {
+                $cat = \App\Catagory::where('id', $k)->first();
+                if ($cat) {
+                    $catName = $cat->name;
+                } else {
+                    $catName = "سایر";
+                }
+           $contents = Content::where('catagory_id', $k)
+                    ->get();
+//                $contents = $this->ageFilter($user, $k);
+
+                $c = [];
+                $i = 0;
+
+                foreach ($contents as $content) {
+                    $image = $content->image->path;
+//            
+                    if ($content->image) {
+                        $content = $content->toArray();
+                        $content['image'] = $image;
+                        $c[$i] = $content;
+
+                        $i++;
+                    }
+                    //$c['catName']=$catName;
+                }
+
+                $d[$j] = ['contents' => $c, 'catName' => $catName];
+                $j++;
             }
-            //$c['catName']=$catName;
+
+            return response()->json(['cats' => $d], 200);
         }
-        
-        $d[$j] = ['contents' => $c, 'catName' => $catName]; 
-        $j++;
-            }
-            
-            return response()->json( ['cats' => $d], 200);     
-        }
-        
-       
-        
-        
-        return response()->json( ['contents' => $c, 'catName' => $catName], 200);       
+
+
+
+
+        return response()->json(['contents' => $c, 'catName' => $catName], 200);
     }
-    
-    
-    
-    public function showSearch(Request $request){
+
+    public function showSearch(Request $request) {
         $user = Auth::user();
-        
+
         $search = $request->s;
-        
-        $contents = Content::where('name', 'LIKE', $search.'%')
-                ->orwhere('desc', 'LIKE', $search.'%')
+
+        $contents = Content::where('name', 'LIKE', $search . '%')
+                ->orwhere('desc', 'LIKE', $search . '%')
                 ->select('name')
-                ->orderBy('dl_count','desc')
+                ->orderBy('dl_count', 'desc')
                 ->take(10)
                 ->get();
-  
-        return response()->json( ['contents' => $contents], 200);   
-        
+
+        return response()->json(['contents' => $contents], 200);
     }
-    
-    public function searchContent(Request $request){
-        
+
+    public function searchContent(Request $request) {
+
         $user = Auth::user();
-        
+
         $search = $request->s;
-        
-        $contents = Content::where('name', 'LIKE', $search.'%')
-                ->orwhere('desc', 'LIKE', $search.'%')
-                
+
+        $contents = Content::where('name', 'LIKE', $search . '%')
+                ->orwhere('desc', 'LIKE', $search . '%')
                 ->get();
 //        $contents->age;
-       $c=[];
-       $i=0;
-       
-        foreach($contents as $content)
-        {
+        $c = [];
+        $i = 0;
+
+        foreach ($contents as $content) {
             $image = $content->image->path;
-            
-            if($content->image){
+
+            if ($content->image) {
                 $content = $content->toArray();
-                $content['image']=$image;
-                $c[$i]=$content;
+                $content['image'] = $image;
+                $c[$i] = $content;
 
                 $i++;
             }
         }
-        return response()->json( ['contents' => $c], 200);       
+        return response()->json(['contents' => $c], 200);
     }
-    
-    public function getVersionAll(Request $request){
-        
+
+    public function getVersionAll(Request $request) {
+
         $user = Auth::user();
-        
+
         $search = $request->s;
-        
+
         $contents = Content::select('name', 'id', 'version')
                 ->get();
 
-        return response()->json( ['contents' => $contents], 200);
+        return response()->json(['contents' => $contents], 200);
     }
-    
-    public function ageFilter($user, $id){
+
+    public function ageFilter($user, $id) {
         $birth = $this->changeDate($user->birth);
         $age = Carbon::parse($birth)->age;
-        
+
         $contents = Content::where('catagory_id', $id)->
                 where('low_age', '<=', $age)->where('high_age', '>=', $age)
                 ->get();
-         return $contents;          
+        return $contents;
     }
-    
-    public function changeDate($date){
-		$f           = explode("/", $date);
 
-		$d      = \Morilog\Jalali\CalendarUtils::toGregorian($f[0], $f[1], $f[2]);
-		$f_date = $d[0].'-'.$d[1].'-'.$d[2];
+    public function changeDate($date) {
+        $f = explode("/", $date);
+
+        $d = \Morilog\Jalali\CalendarUtils::toGregorian($f[0], $f[1], $f[2]);
+        $f_date = $d[0] . '-' . $d[1] . '-' . $d[2];
         return $f_date;
-        
     }
+
 }
