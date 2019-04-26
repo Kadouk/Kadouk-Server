@@ -157,7 +157,6 @@ class ContentController extends Controller {
 
         $user = Auth::user();
         $user = User::where('phone', '09393212551')->first();
-        
 //        return $user->birth;
         $catID = $request->cat;
         $num = $request->num;
@@ -189,7 +188,7 @@ class ContentController extends Controller {
                 }
             }
         } else {
-//            $contents = $this->ageFilter($user, $catID);
+            // $contents = $this->ageFilter($user, $catID);
             $contents = Content::where('catagory_id', $catID)
                     ->get();
             $c = [];
@@ -223,9 +222,9 @@ class ContentController extends Controller {
                 } else {
                     $catName = "سایر";
                 }
-           $contents = Content::where('catagory_id', $k)
-                    ->get();
-//                $contents = $this->ageFilter($user, $k);
+                $contents = Content::where('catagory_id', $k)
+                        ->get();
+                // $contents = $this->ageFilter($user, $k);
 
                 $c = [];
                 $i = 0;
@@ -322,7 +321,6 @@ class ContentController extends Controller {
 
     public function changeDate($date) {
         $f = explode("/", $date);
-
         $d = \Morilog\Jalali\CalendarUtils::toGregorian($f[0], $f[1], $f[2]);
         $f_date = $d[0] . '-' . $d[1] . '-' . $d[2];
         return $f_date;
