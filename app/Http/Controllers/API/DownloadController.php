@@ -99,4 +99,17 @@ class DownloadController extends Controller
             exit('Requested file does not exist on our server!');
         }
     }
+    
+    public function fileDownload($dev, $pkg){
+
+        $file_path = storage_path('app/games/' . $dev . '/' . $pkg . '/' . $pkg . '.apk');
+    
+        if (file_exists($file_path)){
+            return Response()->file($file_path);
+        }
+        else{
+            exit('Requested file does not exist on our server!');
+        }
+
+    }
 }
