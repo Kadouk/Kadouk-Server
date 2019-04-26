@@ -62,6 +62,15 @@ class DownloadController extends Controller
         $user = Auth::user();
         
         $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
+    
+        if (file_exists($file_path)){
+            return Response()->file($file_path);
+        }
+        else{
+            exit('Requested file does not exist on our server!');
+        }
+        
+        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
         if (file_exists($file_path)){
               $size =filesize($file_path);
             $content = \App\Content::find($content_id);
