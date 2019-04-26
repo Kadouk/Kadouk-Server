@@ -60,4 +60,4 @@ Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}',
 Route::post('/update/kadouk', 'API\AppController@checkVersion');
 
 
-Route::get('download/apk/{dev}/{pkg}', 'API\DownloadController@fileDownload');
+Route::get('download/file/{dev}/{pkg}', 'API\DownloadController@fileDownload');
