@@ -496,6 +496,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
     );
 
     public static $classMap = array (
+        'App\\App' => __DIR__ . '/../..' . '/app/App.php',
         'App\\AuthenticatesUser' => __DIR__ . '/../..' . '/app/AuthenticatesUser.php',
         'App\\Catagory' => __DIR__ . '/../..' . '/app/Catagory.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -505,6 +506,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'App\\ContentMedia' => __DIR__ . '/../..' . '/app/ContentMedia.php',
         'App\\Device' => __DIR__ . '/../..' . '/app/Device.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\AppController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/AppController.php',
         'App\\Http\\Controllers\\API\\CatagoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CatagoryController.php',
         'App\\Http\\Controllers\\API\\ContentController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ContentController.php',
         'App\\Http\\Controllers\\API\\DownloadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/DownloadController.php',
@@ -526,6 +528,7 @@ class ComposerStaticInit1d4cba683fef596bf5038e7676de27fb
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Resources\\Content' => __DIR__ . '/../..' . '/app/Http/Resources/Content.php',
+        'App\\Mail\\VerifyMail' => __DIR__ . '/../..' . '/app/Mail/VerifyMail.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

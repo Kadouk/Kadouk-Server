@@ -71,6 +71,6 @@ class User extends Authenticatable
     
     public function hasToken()
     {
-        return $this->hasMany('App\Token');
+        return $this->hasOne('App\Token');
     }
 }

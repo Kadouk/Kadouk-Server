@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\App' => $baseDir . '/app/App.php',
     'App\\AuthenticatesUser' => $baseDir . '/app/AuthenticatesUser.php',
     'App\\Catagory' => $baseDir . '/app/Catagory.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -15,6 +16,7 @@ return array(
     'App\\ContentMedia' => $baseDir . '/app/ContentMedia.php',
     'App\\Device' => $baseDir . '/app/Device.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\API\\AppController' => $baseDir . '/app/Http/Controllers/API/AppController.php',
     'App\\Http\\Controllers\\API\\CatagoryController' => $baseDir . '/app/Http/Controllers/API/CatagoryController.php',
     'App\\Http\\Controllers\\API\\ContentController' => $baseDir . '/app/Http/Controllers/API/ContentController.php',
     'App\\Http\\Controllers\\API\\DownloadController' => $baseDir . '/app/Http/Controllers/API/DownloadController.php',
@@ -36,6 +38,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Resources\\Content' => $baseDir . '/app/Http/Resources/Content.php',
+    'App\\Mail\\VerifyMail' => $baseDir . '/app/Mail/VerifyMail.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
