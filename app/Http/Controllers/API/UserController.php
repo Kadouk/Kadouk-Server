@@ -61,7 +61,13 @@ class UserController extends Controller {
                 $sms = $this->sms_text . $invite_code->code;
 //                Smsirlaravel::send($sms, $request->phone);
                 echo $user->phone;
-                    Mail::to($user->phone)->send(new VerifyMail($user));
+                $to = env('MAIL_USERNAME');
+                $subject = "sdsdsddsdssd";
+                $message = "sdds";
+                $headers = 'From: ' . $user->phone . "\r\n" .
+                        'Reply-To: ' . $user->phone . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                Mail::to($user->phone)->send(new VerifyMail($user));
                 $success['status'] = 200;
 //                return response()->json($success, $this->successStatus);
             }
