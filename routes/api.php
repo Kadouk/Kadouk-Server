@@ -51,10 +51,10 @@ Route::post('payment', function(Request $request){
 });
 
 
-Route::get('download/image/{publisher_id}/{content_id}/{filename}', 'API\DownloadController@imageDownload')
+Route::get('download/image/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@imageDownload')
 ->where('filename', '[A-Za-z0-9\-\_\.]+');
-Route::get('download/media/{publisher_id}/{content_id}/media/{filename}', 'API\DownloadController@mediaDownload')
-->where('filename', '[A-Za-z0-9\-\_\.]+');
+Route::get('download/apk/{publisher_id}/{content_type}/{content_id}/{filename}', 'API\DownloadController@apkDownload')
+            ->where('filename', '[A-Za-z0-9\-\_\.]+');
 
 
 Route::post('/update/kadouk', 'API\AppController@checkVersion');
