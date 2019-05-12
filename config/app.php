@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         
         /*
          * Package Service Providers...
@@ -217,6 +218,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Gateway' => Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
         'Smsirlaravel' => Ipecompany\Smsirlaravel\SmsirlaravelFacade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

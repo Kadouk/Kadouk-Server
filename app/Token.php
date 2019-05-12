@@ -51,7 +51,7 @@ class Token extends Model
     public function user()
     {
         //$this->byCode($code);
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User', 'user_id');
     }
     
     public static function byCode($code)

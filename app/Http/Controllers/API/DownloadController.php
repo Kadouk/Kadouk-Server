@@ -44,9 +44,9 @@ class DownloadController extends Controller
         
     }
     
-    public function imageDownload($publisher_id, $content_type, $content_id, $filename){
+    public function imageDownload($publisher_id, $content_id, $filename){
 
-        $file_path = storage_path('app/files/' . $publisher_id . '/' . $content_type . '/' . $content_id . '/' . $filename);
+        $file_path = storage_path('app/games/' . $publisher_id . '/' . $content_id . '/' . $filename);
     
         if (file_exists($file_path)){
             return Response()->file($file_path);
@@ -100,9 +100,9 @@ class DownloadController extends Controller
         }
     }
     
-    public function fileDownload($dev, $pkg){
+    public function mediaDownload($publisher_id, $content_id, $filename){
 
-        $file_path = storage_path('app/games/' . $dev . '/' . $pkg . '/' . $pkg . '.apk');
+        $file_path = storage_path('app/games/' . $publisher_id . '/' . $content_id . '/media/' . $filename);
     
         if (file_exists($file_path)){
             return Response()->file($file_path);

@@ -8,6 +8,7 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/resources/views/layouts/app.blade.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/AppController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/upload/model.js</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/mail.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Catagory.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/services.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Providers/AuthServiceProvider.php</file>
@@ -16,13 +17,15 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/.env</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/resources/views/test_upload.blade.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/resources/views/welcome.blade.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/resources/views/emails/verifyUser.blade.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/ContentMedia.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/AuthenticatesUser.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/routes/api.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/jquery.fileupload-angular.js</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Mail/VerifyMail.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/database/migrations/2016_05_02_193213_create_gateway_transactions_table.php</file>
-            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/App.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/app.js</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/App.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/DeviceController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/jquery.fileupload.js</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/css/app.css</file>
@@ -42,10 +45,11 @@
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/User.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/ContentController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/upload/image.js</file>
-            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/UserController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/config/gateway.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/API/UserController.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Transaction.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Http/Controllers/DownloadController.php</file>
+            <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/.env.example</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/public/js/app3.js</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/app/Content.php</file>
             <file>file:/Users/jahan/Desktop/Kadouk/Web/Laravel/Kadouk/package.json</file>

@@ -40,5 +40,9 @@ return [
     'zarinGate' => false,
     'sandbox' => true,
     ],
+    'google' => [
+        'client_id' => '484317972407-dgki475gj530gspqqka8trhdt6nme37g.apps.googleusercontent.com',
+        'client_secret' => 'hl-NcvcKvMM_9Csg8MMX3NZq',
+        'redirect' => 'http://127.0.0.1:8000/callback'],
 
 ];

@@ -67,6 +67,7 @@ class UserController extends Controller {
                 $headers = 'From: ' . $user->phone . "\r\n" .
                         'Reply-To: ' . $user->phone . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
+                
                 Mail::to($user->phone)->send(new VerifyMail($user));
                 $success['status'] = 200;
 //                return response()->json($success, $this->successStatus);
