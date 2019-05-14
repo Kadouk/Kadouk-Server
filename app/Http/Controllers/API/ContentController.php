@@ -52,32 +52,9 @@ class ContentController extends Controller {
     public function show(Request $request) {
         $user = Auth::user();
         $contents = Content::all();
-        $c = [];
-        $i = 0;
-        foreach ($contents as $content) {
 
-            $image = $content->image->path;
-            //echo $image;
-            //if($image)
-            // echo $image->path;
-            //if($image)
-            // $image = $image->toArray();
-            //$content = $content->toArray();
-            //echo $content->image;
-            //echo $content->crossJoin($image);
-            if ($content->image) {
-                // echo $image->path;
-                // $content->pull($content->image);
-                $content = $content->toArray();
-                $content['image'] = $image;
-                $c[$i] = $content;
-                //return $content;
-                //  echo $content;
-                $i++;
-            }
-        }
-        //return $c;
-        return response()->json(['contents' => $c], 200);
+        $contents = $this->addImageUrls($contents);
+        return response()->json(['contents' => $contents], 200);
     }
 
     /**
@@ -118,28 +95,11 @@ class ContentController extends Controller {
         $file = $content->file->path;
         $media = $content->media;
 
-
-        //echo $image;
-        //if($image)
-        // echo $image->path;
-        //if($image)
-        // $image = $image->toArray();
-        //$content = $content->toArray();
-        //echo $content->image;
-        //echo $content->crossJoin($image);
-
         if ($content->image) {
-            // echo $image->path;
-            // $content->pull($content->image);
             $content = $content->toArray();
-            //$c['media'] = $media;
             $content['image'] = $image;
             $content['file'] = $file;
-            //$c[$i]=$content;
-            //return $content;
-            //  echo $content;
         }
-        //return $c;
         return response()->json($content, 200);
     }
 
@@ -173,45 +133,17 @@ class ContentController extends Controller {
             $contents = Content::where('catagory_id', $catID)
                     ->take($num)
                     ->get();
-            $c = [];
-            $i = 0;
-
-            foreach ($contents as $content) {
-                $image = $content->image->path;
-//            
-                if ($content->image) {
-                    $content = $content->toArray();
-                    $content['image'] = $image;
-                    $c[$i] = $content;
-
-                    $i++;
-                }
-            }
+            $contents = $this->addImageUrls($contents);
         } else {
             // $contents = $this->ageFilter($user, $catID);
             $contents = Content::where('catagory_id', $catID)
                     ->get();
-            $c = [];
-            $i = 0;
-
-            foreach ($contents as $content) {
-                $image = $content->image->path;
-//            
-                if ($content->image) {
-                    $content = $content->toArray();
-                    $content['image'] = $image;
-                    $c[$i] = $content;
-
-                    $i++;
-                }
-            }
+            $contents = $this->addImageUrls($contents);
         }
 
 
         $d = [];
         $j = 0;
-
-
         if ($catID == -1) {
 //             $count = \App\Catagory::where('id', $catID)->first();
 
@@ -226,23 +158,9 @@ class ContentController extends Controller {
                         ->get();
                 // $contents = $this->ageFilter($user, $k);
 
-                $c = [];
-                $i = 0;
+                $contents = $this->addImageUrls($contents);
 
-                foreach ($contents as $content) {
-                    $image = $content->image->path;
-//            
-                    if ($content->image) {
-                        $content = $content->toArray();
-                        $content['image'] = $image;
-                        $c[$i] = $content;
-
-                        $i++;
-                    }
-                    //$c['catName']=$catName;
-                }
-
-                $d[$j] = ['contents' => $c, 'catName' => $catName];
+                $d[$j] = ['contents' => $contents, 'catName' => $catName];
                 $j++;
             }
 
@@ -252,9 +170,10 @@ class ContentController extends Controller {
 
 
 
-        return response()->json(['contents' => $c, 'catName' => $catName], 200);
+        return response()->json(['contents' => $contents, 'catName' => $catName], 200);
     }
 
+    
     public function showSearch(Request $request) {
         $user = Auth::user();
 
@@ -279,22 +198,9 @@ class ContentController extends Controller {
         $contents = Content::where('name', 'LIKE', $search . '%')
                 ->orwhere('desc', 'LIKE', $search . '%')
                 ->get();
-//        $contents->age;
-        $c = [];
-        $i = 0;
 
-        foreach ($contents as $content) {
-            $image = $content->image->path;
-
-            if ($content->image) {
-                $content = $content->toArray();
-                $content['image'] = $image;
-                $c[$i] = $content;
-
-                $i++;
-            }
-        }
-        return response()->json(['contents' => $c], 200);
+       $contents = $this->addImageUrls($contents);
+        return response()->json(['contents' => $contents], 200);
     }
 
     public function getVersionAll(Request $request) {
@@ -318,12 +224,61 @@ class ContentController extends Controller {
                 ->get();
         return $contents;
     }
+    
+    public function filter(Request $request){
+        
+        $age = $request->age;
+        $cat = $request->cat;
+        
+        if($age == null){ //cat
+            $contents = Content::where('catagory_id', $cat)
+                    ->get();
+            $contents = $this->addImageUrls($contents);
+        }
+        
+        if($cat == null){ //age
+            $contents = Content::where('high_age', $age)
+                    ->get();
+            $contents = $this->addImageUrls($contents);
+        }
+        
+        if($cat != null && $age != null){ //both
+            $contents = Content::where('high_age', '==', $age)
+                    ->where('catagory_id', $cat)
+                    ->get();
+            $contents = $this->addImageUrls($contents);
+        }
+        
+        return response()->json(['contents' => $contents], 200);
+    }
+    
+    
 
     public function changeDate($date) {
         $f = explode("/", $date);
         $d = \Morilog\Jalali\CalendarUtils::toGregorian($f[0], $f[1], $f[2]);
         $f_date = $d[0] . '-' . $d[1] . '-' . $d[2];
         return $f_date;
+    }
+    
+    public function addImageUrls($contents){
+        $c = [];
+        $i = 0;
+
+        foreach ($contents as $content) {
+            $image = $content->image->path;
+
+            if ($content->image) {
+                $content = $content->toArray();
+                $content['image'] = $image;
+                $c[$i] = $content;
+
+                $i++;
+            }
+        }
+        
+        return $c;
+        
     }
 
 }

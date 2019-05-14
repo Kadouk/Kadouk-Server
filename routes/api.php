@@ -38,6 +38,8 @@ Route::post('/content/search', 'API\ContentController@searchContent');
 
 Route::post('/content/show/cat', 'API\ContentController@showCatContent');
 
+Route::post('/content/show/filter', 'API\ContentController@filter');
+
 
 
 
