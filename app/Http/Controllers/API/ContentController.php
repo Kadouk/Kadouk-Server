@@ -232,23 +232,22 @@ class ContentController extends Controller {
         
         if($age == null){ //cat
             $contents = Content::where('catagory_id', $cat)
-                    ->get();
-            $contents = $this->addImageUrls($contents);
+                    ->get();        
         }
         
-        if($cat == null){ //age
+        else if($cat == null){ //age
             $contents = Content::where('high_age', $age)
                     ->get();
-            $contents = $this->addImageUrls($contents);
+
         }
         
-        if($cat != null && $age != null){ //both
-            $contents = Content::where('high_age', '==', $age)
+        else{ //both
+            $contents = Content::where('high_age', $age)
                     ->where('catagory_id', $cat)
                     ->get();
-            $contents = $this->addImageUrls($contents);
         }
         
+        $contents = $this->addImageUrls($contents);
         return response()->json(['contents' => $contents], 200);
     }
     
