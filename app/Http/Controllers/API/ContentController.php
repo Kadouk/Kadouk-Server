@@ -251,10 +251,10 @@ class ContentController extends Controller {
         $age = $request->age;
         $cat = $request->cat;
 
-        if ($age == null) { //cat
+        if ($age == 0) { //cat
             $contents = Content::where('catagory_id', $cat)
                     ->get();
-        } else if ($cat == null) { //age
+        } else if ($cat == 0) { //age
             $contents = Content::where('high_age', $age)
                     ->get();
         } else { //both
