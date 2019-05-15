@@ -23,7 +23,6 @@ class Content extends Model
     
     protected $hidden = [
         'catagory_id',
-        'publisher_id',
         'created_at',
         'updated_at'
         

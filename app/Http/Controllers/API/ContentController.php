@@ -89,16 +89,38 @@ class ContentController extends Controller {
     }
 
     public function showContent(Request $request) {
+
+        $user = Auth::user();
+        $user = User::where('phone', '09393212551')->first();
+
         $content = Content::find($request->id);
 
         $image = $content->image->path;
-        $file = $content->file->path;
+//        $file = $content->file->path;
         $media = $content->media;
+
+        $publisher = \App\Publisher::where('id', $content->publisher_id)
+                        ->first()->company_name;
+
+        $stars = \App\UserHasContent::where('content_id', $request->id)
+                ->count();
+
+        $is_star = 0;
+        $is_star = \App\UserHasContent::where('content_id', $request->id)
+                ->where('user_id', $user->id)
+                ->exists();
 
         if ($content->image) {
             $content = $content->toArray();
             $content['image'] = $image;
-            $content['file'] = $file;
+            $content['publisher'] = $publisher;
+            $content['stars'] = $stars;
+            if ($is_star == 1) {
+                $content['is_star'] = true;
+            } else {
+                $content['is_star'] = false;
+            }
+//            $content['file'] = $file;
         }
         return response()->json($content, 200);
     }
@@ -173,7 +195,6 @@ class ContentController extends Controller {
         return response()->json(['contents' => $contents, 'catName' => $catName], 200);
     }
 
-    
     public function showSearch(Request $request) {
         $user = Auth::user();
 
@@ -199,7 +220,7 @@ class ContentController extends Controller {
                 ->orwhere('desc', 'LIKE', $search . '%')
                 ->get();
 
-       $contents = $this->addImageUrls($contents);
+        $contents = $this->addImageUrls($contents);
         return response()->json(['contents' => $contents], 200);
     }
 
@@ -224,34 +245,27 @@ class ContentController extends Controller {
                 ->get();
         return $contents;
     }
-    
-    public function filter(Request $request){
-        
+
+    public function filter(Request $request) {
+
         $age = $request->age;
         $cat = $request->cat;
-        
-        if($age == null){ //cat
+
+        if ($age == null) { //cat
             $contents = Content::where('catagory_id', $cat)
-                    ->get();        
-        }
-        
-        else if($cat == null){ //age
+                    ->get();
+        } else if ($cat == null) { //age
             $contents = Content::where('high_age', $age)
                     ->get();
-
-        }
-        
-        else{ //both
+        } else { //both
             $contents = Content::where('high_age', $age)
                     ->where('catagory_id', $cat)
                     ->get();
         }
-        
+
         $contents = $this->addImageUrls($contents);
         return response()->json(['contents' => $contents], 200);
     }
-    
-    
 
     public function changeDate($date) {
         $f = explode("/", $date);
@@ -259,8 +273,8 @@ class ContentController extends Controller {
         $f_date = $d[0] . '-' . $d[1] . '-' . $d[2];
         return $f_date;
     }
-    
-    public function addImageUrls($contents){
+
+    public static function addImageUrls($contents) {
         $c = [];
         $i = 0;
 
@@ -275,9 +289,18 @@ class ContentController extends Controller {
                 $i++;
             }
         }
-        
+
         return $c;
-        
+    }
+
+    public function addStar(Request $request) {
+//        $user = Auth::user();
+//        $user_id = $user->id;
+        $user = User::where('phone', '09393212551')->first();
+        $content_id = $request->id;
+
+        $content = \App\Content::find($content_id);
+        $content->users()->attach($user);
     }
 
 }

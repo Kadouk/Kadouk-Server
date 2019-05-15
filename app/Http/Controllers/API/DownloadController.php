@@ -9,6 +9,7 @@ use App\User;
 use App\UserHasContent;
 use Illuminate\Support\Facades\Storage;
 
+use App\Http\Controllers\API\ContentController;
 use Illuminate\Support\Facades\Response;
 
 class DownloadController extends Controller
@@ -16,26 +17,15 @@ class DownloadController extends Controller
     //
     
     public function showHistory(Request $request){
-        $c=[];
-        $i=0;
+
         
         $user = Auth::user(); 
-        
+        $user = User::where('phone', '09393212551')->first();
         $contents = $user->contents;
         
-        foreach($contents as $content)
-        {
-            $image = $content->image->path;
+        $contents = ContentController::addImageUrls($contents);
 
-            if($content->image){
-                $content = $content->toArray();
-                $content['image']=$image;
-                $c[$i]=$content;
-                $i++;
-            }
-        }
-
-        return response()->json( ['contents' => $c], 200); 
+        return response()->json( ['contents' => $contents], 200); 
         
     }
     
