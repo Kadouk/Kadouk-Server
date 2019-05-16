@@ -45,6 +45,16 @@ class User extends Authenticatable
         return static::where('phone', $phone)->first();
     }
     
+      /**
+     * Retrieve a user by their Email.
+     *
+     * @param  string $email
+     * @return $this
+     */
+    public static function byEmail($email){
+        return static::where('email', $email)->first();
+    }
+    
      /**
      * 
      *

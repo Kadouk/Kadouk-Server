@@ -42,6 +42,8 @@ Route::post('/content/show/filter', 'API\ContentController@filter');
 
 Route::post('/content/add/star', 'API\ContentController@addStar');
 
+Route::post('/content/remove/star', 'API\ContentController@removeStar');
+
 Route::post('/publisher/show/contents', 'API\PublisherController@contentList');
 
 

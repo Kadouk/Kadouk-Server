@@ -12,6 +12,7 @@ use Validator;
 use App\Mail\VerifyMail;
 use Smsirlaravel;
 use Illuminate\Support\Carbon;
+use Socialite;
 
 class UserController extends Controller {
 
@@ -106,22 +107,22 @@ class UserController extends Controller {
         $token = $request->code;
 
         $code = Token::byCode($token);
-
-        if ($code) {
-//            if($code->used == 1){
-//                return response()->json(['error'=>'Code Used'], $this-> successStatus); 
-//            }
-//            $user = $this->getCode($code);
-            $user = $code->user;
-            if ($user && $user->phone == $phone) {
-                $code->delete();
-                return $this->login($user);
-            } else {
-                return response()->json(['error' => 'Wrong Code'], $this->successStatus);
-            }
-        } else {
-            return response()->json(['error' => 'Wrong Code'], $this->successStatus);
+        $validator = Validator::make($request->all(), [
+                    'phone' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
         }
+        if (!User::byPhone($request->phone)) {
+            $input = $request->all();
+            //$input['password'] = bcrypt($input['password']); 
+            $user = User::create($input);
+        } else {
+            $user = User::byPhone($request->phone);
+        }
+        $success['token'] = $user->phone;
+            return response()->json($success, $this->successStatus);
+        
     }
 
     /**

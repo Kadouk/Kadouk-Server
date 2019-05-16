@@ -15,34 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class ContentController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request) {
-        //
-    }
-
+    
     /**
      * Display the specified resource.
      *
@@ -55,37 +28,6 @@ class ContentController extends Controller {
 
         $contents = $this->addImageUrls($contents);
         return response()->json(['contents' => $contents], 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id) {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id) {
-        //
     }
 
     public function showContent(Request $request) {
@@ -277,6 +219,16 @@ class ContentController extends Controller {
 
         $content = \App\Content::find($content_id);
         $content->users()->attach($user);
+    }
+    
+    public function removeStar(Request $request) {
+//        $user = Auth::user();
+//        $user_id = $user->id;
+        $user = User::where('phone', '09393212551')->first();
+        $content_id = $request->id;
+
+        $content = \App\Content::find($content_id);
+        $content->users()->detach($user);
     }
     
     public static function modifyContent($content){
