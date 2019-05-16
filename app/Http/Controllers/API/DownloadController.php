@@ -20,10 +20,10 @@ class DownloadController extends Controller
 
         
         $user = Auth::user(); 
-        $user = User::where('phone', '09393212551')->first();
+        $user = User::where('phone', $request->token)->first();
         $contents = $user->contents;
         
-        $contents = ContentController::addImageUrls($contents);
+        $contents = ContentController::addImageUrls($contents, $user);
 
         return response()->json( ['contents' => $contents], 200); 
         

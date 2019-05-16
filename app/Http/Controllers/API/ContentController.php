@@ -24,22 +24,24 @@ class ContentController extends Controller {
      */
     public function show(Request $request) {
         $user = Auth::user();
+        $user = User::where('phone', $request->token)->first();
+        
         $contents = Content::all();
 
-        $contents = $this->addImageUrls($contents);
+        $contents = $this->addImageUrls($contents, $user);
         return response()->json(['contents' => $contents], 200);
     }
 
     public function showContent(Request $request) {
 
         $user = Auth::user();
-        $user = User::where('phone', '09393212551')->first();
+        $user = User::where('phone', $request->token)->first();
 
         $content = Content::find($request->id);
         $media = $content->media;
         
 
-        $content = $this->modifyContent($content);
+        $content = $this->modifyContent($content,$user);
         return response()->json($content, 200);
     }
 
@@ -56,7 +58,7 @@ class ContentController extends Controller {
     public function showCatContent(Request $request) {
 
         $user = Auth::user();
-        $user = User::where('phone', '09393212551')->first();
+        $user = User::where('phone', $request->token)->first();
 //        return $user->birth;
         $catID = $request->cat;
         $num = $request->num;
@@ -73,12 +75,12 @@ class ContentController extends Controller {
             $contents = Content::where('catagory_id', $catID)
                     ->take($num)
                     ->get();
-            $contents = $this->addImageUrls($contents);
+            $contents = $this->addImageUrls($contents, $user);
         } else {
             // $contents = $this->ageFilter($user, $catID);
             $contents = Content::where('catagory_id', $catID)
                     ->get();
-            $contents = $this->addImageUrls($contents);
+            $contents = $this->addImageUrls($contents, $user);
         }
 
 
@@ -98,7 +100,7 @@ class ContentController extends Controller {
                         ->get();
                 // $contents = $this->ageFilter($user, $k);
 
-                $contents = $this->addImageUrls($contents);
+                $contents = $this->addImageUrls($contents, $user);
 
                 $d[$j] = ['contents' => $contents, 'catName' => $catName];
                 $j++;
@@ -115,6 +117,7 @@ class ContentController extends Controller {
 
     public function showSearch(Request $request) {
         $user = Auth::user();
+        $user = User::where('phone', $request->token)->first();
 
         $search = $request->s;
 
@@ -131,6 +134,7 @@ class ContentController extends Controller {
     public function searchContent(Request $request) {
 
         $user = Auth::user();
+        $user = User::where('phone', $request->token)->first();
 
         $search = $request->s;
 
@@ -138,7 +142,7 @@ class ContentController extends Controller {
                 ->orwhere('desc', 'LIKE', $search . '%')
                 ->get();
 
-        $contents = $this->addImageUrls($contents);
+        $contents = $this->addImageUrls($contents, $user);
         return response()->json(['contents' => $contents], 200);
     }
 
@@ -168,6 +172,7 @@ class ContentController extends Controller {
 
         $age = $request->age;
         $cat = $request->cat;
+        $user = User::where('phone', $request->token)->first();
 
         if ($age == 0) { //cat
             $contents = Content::where('catagory_id', $cat)
@@ -181,7 +186,7 @@ class ContentController extends Controller {
                     ->get();
         }
 
-        $contents = $this->addImageUrls($contents);
+        $contents = $this->addImageUrls($contents, $user);
         return response()->json(['contents' => $contents], 200);
     }
 
@@ -192,13 +197,13 @@ class ContentController extends Controller {
         return $f_date;
     }
 
-    public static function addImageUrls($contents) {
+    public static function addImageUrls($contents, $user) {
         $c = [];
         $i = 0;
 
         foreach ($contents as $content) {
 //            $image = $content->image->path;
-            $content = ContentController::modifyContent($content);
+            $content = ContentController::modifyContent($content, $user);
 //            if ($content->image) {
 //                $content = $content->toArray();
 //                $content['image'] = $image;
@@ -214,7 +219,7 @@ class ContentController extends Controller {
     public function addStar(Request $request) {
 //        $user = Auth::user();
 //        $user_id = $user->id;
-        $user = User::where('phone', '09393212551')->first();
+        $user = User::where('phone', $request->token)->first();
         $content_id = $request->id;
 
         $content = \App\Content::find($content_id);
@@ -224,15 +229,16 @@ class ContentController extends Controller {
     public function removeStar(Request $request) {
 //        $user = Auth::user();
 //        $user_id = $user->id;
-        $user = User::where('phone', '09393212551')->first();
+        $user = User::where('phone', $request->token)->first();
         $content_id = $request->id;
 
         $content = \App\Content::find($content_id);
         $content->users()->detach($user);
     }
     
-    public static function modifyContent($content){
-        $user = User::where('phone', '09393212551')->first();
+    public static function modifyContent($content,$user){
+//        $user = User::where('phone', '09393212551')->first();
+        
         $publisher = \App\Publisher::where('id', $content->publisher_id)
                         ->first()->company_name;
 
@@ -241,10 +247,14 @@ class ContentController extends Controller {
         
         $cat = \App\Catagory::where('id', $content->catagory_id)
                 ->first()->name;
-
+        if($user){
         $is_star = \App\UserHasContent::where('content_id', $content->id)
                 ->where('user_id', $user->id)
                 ->exists();
+        }
+        else{
+            $is_star = 0;
+        }
         
         $image = $content->image->path;
         if ($content->image) {

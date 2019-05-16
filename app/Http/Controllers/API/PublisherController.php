@@ -15,6 +15,7 @@ class PublisherController extends Controller {
 
         $publisher_id = $request->id;
         $num = $request->num;
+        $user = User::where('phone', $request->token)->first();
 
         if ($num == -1) {
             $contents = Content::where('publisher_id', $publisher_id)
@@ -24,7 +25,7 @@ class PublisherController extends Controller {
                     ->take($num)
                     ->get();
         }
-        $contents = ContentController::addImageUrls($contents);
+        $contents = ContentController::addImageUrls($contents, $user);
 
         return response()->json(['contents' => $contents], 200);
     }
