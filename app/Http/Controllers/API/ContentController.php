@@ -280,34 +280,32 @@ class ContentController extends Controller {
     }
     
     public static function modifyContent($content){
-        
         $user = User::where('phone', '09393212551')->first();
         $publisher = \App\Publisher::where('id', $content->publisher_id)
                         ->first()->company_name;
 
         $stars = \App\UserHasContent::where('content_id', $content->id)
                 ->count();
+        
+        $cat = \App\Catagory::where('id', $content->catagory_id)
+                ->first()->name;
 
-        $is_star = 0;
         $is_star = \App\UserHasContent::where('content_id', $content->id)
                 ->where('user_id', $user->id)
                 ->exists();
         
         $image = $content->image->path;
-//        $file = $content->file->path;
-        
-        
         if ($content->image) {
             $content = $content->toArray();
             $content['image'] = $image;
             $content['publisher'] = $publisher;
             $content['stars'] = $stars;
+            $content['cat'] = $cat;
             if ($is_star == 1) {
                 $content['is_star'] = true;
             } else {
                 $content['is_star'] = false;
             }
-//            $content['file'] = $file;
         }
         return $content;
     }
