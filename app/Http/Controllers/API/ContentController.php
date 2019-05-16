@@ -94,34 +94,10 @@ class ContentController extends Controller {
         $user = User::where('phone', '09393212551')->first();
 
         $content = Content::find($request->id);
-
-        $image = $content->image->path;
-//        $file = $content->file->path;
         $media = $content->media;
+        
 
-        $publisher = \App\Publisher::where('id', $content->publisher_id)
-                        ->first()->company_name;
-
-        $stars = \App\UserHasContent::where('content_id', $request->id)
-                ->count();
-
-        $is_star = 0;
-        $is_star = \App\UserHasContent::where('content_id', $request->id)
-                ->where('user_id', $user->id)
-                ->exists();
-
-        if ($content->image) {
-            $content = $content->toArray();
-            $content['image'] = $image;
-            $content['publisher'] = $publisher;
-            $content['stars'] = $stars;
-            if ($is_star == 1) {
-                $content['is_star'] = true;
-            } else {
-                $content['is_star'] = false;
-            }
-//            $content['file'] = $file;
-        }
+        $content = $this->modifyContent($content);
         return response()->json($content, 200);
     }
 
@@ -279,15 +255,15 @@ class ContentController extends Controller {
         $i = 0;
 
         foreach ($contents as $content) {
-            $image = $content->image->path;
-
-            if ($content->image) {
-                $content = $content->toArray();
-                $content['image'] = $image;
+//            $image = $content->image->path;
+            $content = ContentController::modifyContent($content);
+//            if ($content->image) {
+//                $content = $content->toArray();
+//                $content['image'] = $image;
                 $c[$i] = $content;
 
                 $i++;
-            }
+//            }
         }
 
         return $c;
@@ -301,6 +277,39 @@ class ContentController extends Controller {
 
         $content = \App\Content::find($content_id);
         $content->users()->attach($user);
+    }
+    
+    public static function modifyContent($content){
+        
+        $user = User::where('phone', '09393212551')->first();
+        $publisher = \App\Publisher::where('id', $content->publisher_id)
+                        ->first()->company_name;
+
+        $stars = \App\UserHasContent::where('content_id', $content->id)
+                ->count();
+
+        $is_star = 0;
+        $is_star = \App\UserHasContent::where('content_id', $content->id)
+                ->where('user_id', $user->id)
+                ->exists();
+        
+        $image = $content->image->path;
+//        $file = $content->file->path;
+        
+        
+        if ($content->image) {
+            $content = $content->toArray();
+            $content['image'] = $image;
+            $content['publisher'] = $publisher;
+            $content['stars'] = $stars;
+            if ($is_star == 1) {
+                $content['is_star'] = true;
+            } else {
+                $content['is_star'] = false;
+            }
+//            $content['file'] = $file;
+        }
+        return $content;
     }
 
 }
