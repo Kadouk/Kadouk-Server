@@ -15,7 +15,7 @@ class PublisherController extends Controller {
 
         $publisher_id = $request->id;
         $num = $request->num;
-        $user = User::where('phone', $request->token)->first();
+        $user = \App\User::where('phone', $request->token)->first();
 
         if ($num == -1) {
             $contents = Content::where('publisher_id', $publisher_id)
