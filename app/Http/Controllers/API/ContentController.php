@@ -138,8 +138,8 @@ class ContentController extends Controller {
 
         $search = $request->s;
 
-        $contents = Content::where('name', 'LIKE', $search . '%')
-                ->orwhere('desc', 'LIKE', $search . '%')
+        $contents = Content::where('name', 'LIKE', '%'.$search . '%')
+                ->orwhere('desc', 'LIKE', '%'.$search . '%')
                 ->get();
 
         $contents = $this->addImageUrls($contents, $user);
